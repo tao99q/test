@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+10
+1.0
+0.1
+0100
+0
+0100
+00.1
+数字：小数，整数，0，NaN
+isNaN()->true:不是一个数，false->是一个数
+遇到不是数字的转一下Number()->数字，NaN
+1.没有就是0
+2.字符串：""->0," "->0,从第一个有效数字开始到最后一个有效数字结束，中间不能有数字以外的任何东西
+3.true->1,false->0,null->0,undefined->NaN
+4.引用数据类型：toString转化为字符串,时间是特例转为毫秒(getTime())
+
+parseInt()
+1.取整数
+2.数字,识别简写，没有就是NaN
+3.字符串：""->NaN," "->NaN,从第一个有效数字到右依次查找遇到非数字（包括点）停止，查出的内容就是结果，没有的话就是NaN
+4.true：NaN，false：NaN，null->NaN，undefined->NaN
+5.引用数据类型：先通过toString方法转为字符串
+-->
+<script type="text/javascript">
+console.log(isNaN("1"));
+console.log(Number(011));
+console.log(Number([1,2]));//"1,2"
+console.log(Number(new Date()));
+console.log(new Date().getTime());
+console.log(parseInt(.3));
+console.log(parseInt());
+console.log(parseInt(''));
+console.log(parseInt(' '));
+console.log(parseInt('2 2'));//2
+console.log(parseInt(' 2 2 '));//2
+console.log(parseInt('2px1111 '));//2
+console.log(parseInt('.1'));//NaN
+console.log(parseInt('001'));//
+console.log(parseInt([]));//
+console.log(parseInt(null));//
+console.log(parseInt({name:"1"}));//
+console.log(parseInt(/\d/));//
+console.log(parseInt(new Date()));//NaN
+console.log(parseFloat(".1"))//0.1
+</script>
+</body>
+</html>

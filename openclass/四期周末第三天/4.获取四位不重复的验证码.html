@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            -webkit-user-select: none;
+            width: 200px;
+            height:60px;
+            font-size: 40px;
+            text-align: center;
+            line-height: 60px;
+            margin: 100px auto;
+            color: white;
+            background: -webkit-linear-gradient(top left,yellow,orange,greenyellow,cyan,plum,pink);
+            background: -moz-linear-gradient(top left,yellow,orange,greenyellow,cyan,plum,pink);
+            background: -ms-linear-gradient(top left,yellow,orange,greenyellow,cyan,plum,pink);
+            background: -o-linear-gradient(top left,yellow,orange,greenyellow,cyan,plum,pink);
+            background: linear-gradient(top left,yellow,orange,greenyellow,cyan,plum,pink);
+
+        }
+    </style>
+</head>
+<body>
+<div class="box" ></div>
+</body>
+</html>
+<script TYPE="text/javascript">
+    var code=document.getElementsByClassName("box")[0];
+    var str1="abcdefghigklmnopqrstuvwxyz";
+    var str2="1234567890";
+    var str=str1+str1.toUpperCase()+str2;
+    function getCode() {
+        var strCode="";
+        while (strCode.length<4){
+            var n=Math.round(Math.random()*61);
+            strCode.indexOf(str[n])===-1?strCode+=str[n]:null;
+        }
+        code.innerHTML=strCode;
+    }
+    getCode()
+</script>

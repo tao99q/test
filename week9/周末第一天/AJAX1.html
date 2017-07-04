@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+</head>
+<body>
+<script type="text/javascript">
+    var xhr = new XMLHttpRequest();
+    //设置请求头xhr.setRequestHeader();
+
+    //设置请求头前必须保证已经执行了open
+    xhr.open("GET", "note.txt", true);
+    /**    xhr.setRequestHeader("tessssssss",8);
+     设置请求头时，不能设置汉字，如果使用汉字，需要相应的编码(客户端)和解码(服务器)
+     1. escape/unescape:客户端对中文或者是特殊字符进行编码，服务器进行解码，但是一般不用，因为只有node环境才支持
+     2.encodeURI/decodeURI:按照unicode编码解码(只是对汉字编码解码)
+     3.encodeURIComponent/decodeURIComponent：可以对汉字和特殊字符编码解码(用的最多)
+     */
+    xhr.setRequestHeader("tessssssss", encodeURIComponent("&*^%~`"));
+    console.log(decodeURI("&*%5E%25~%60"));
+    xhr.onreadystatechange = function () {
+//        if (xhr.readyState == 4 && xhr.status == 200) {
+//
+//        }
+    }
+    xhr.send(null);
+</script>
+</body>
+</html>

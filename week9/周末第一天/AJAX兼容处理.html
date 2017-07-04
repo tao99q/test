@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     //正常情况
+     var xhr = new XMLHttpRequest();
+     //在IE6 及以下不兼容 三种
+     xhr = new ActiveXObject("Microsoft.XMLHTTP");
+     xhr = new ActiveXObject("Msxml2.XMLHTTP");
+     xhr = new ActiveXObject("Msxml3.XMLHTTP");
+     */
+    function createXHR() {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            //ie6
+            try {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) {
+                try {
+                    xhr = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    xhr = new ActiveXObject("Msxml3.XMLHTTP");
+                }
+            }
+        }
+        return xhr;
+    }
+    var xhr1 = createXHR();
+    var xhr2 = createXHR();
+    /**
+     * 每一次执行createXHR都需要从新验证当前浏览器支持那个方法，但是我们不希望这样的，我们希望这个函数执行一次之后我就已经知道当前浏览器支持那个，以后就不用再做判断
+     * 惰性思想
+     *
+     */
+    function createXHR() {
+        var xhr = null,
+            ary = [
+                function () {
+                    return new XMLHttpRequest();
+                }, function () {
+                    return xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }, function () {
+                    return xhr = new ActiveXObject("Msxml2.XMLHTTP");
+                }, function () {
+                    return xhr = new ActiveXObject("Msxml3.XMLHTTP");
+                }
+            ];
+        for (var i = 0; i < ary.length; i++) {
+            try {
+                xhr = xhr[i]();
+                createXHR = xhr[i];
+                break;
+            } catch (e) {
+
+            }
+
+        }
+        return xhr;
+
+    }
+</script>
+</body>
+</html>

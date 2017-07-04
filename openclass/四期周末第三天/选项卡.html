@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{margin: 0;padding: 0}
+        ul{list-style: none;}
+        ul{margin: 0 auto;width: 300px;height: 50px;line-height: 50px;text-align: center;}
+        ul:after{display: block;content: "";clear: both;}
+        li{float: left;background: #c9c9c9;width: 100px;cursor: pointer;}
+        div{margin: 0 auto;width: 300px;height: 300px;background: #59b07d;color: #fff;line-height: 300px;text-align: center;font-size: 50px;display: none;}
+        li.cur{background: #59b07d;color: #fff;}
+        div.cur{display: block;}
+    </style>
+</head>
+<body>
+<!--
+原理：
+点击li时，将所有li的类名清除掉，然后将这个特殊的类名添加给点击的这个li
+点击li的同时，div也将类名全部清除掉，然后将这个特殊类名添加给对应的div
+-->
+<ul>
+    <li class="cur">电影</li><li>电视剧</li><li>新闻</li>
+</ul>
+<div class="cur">电影</div><div>电视剧</div><div>新闻</div>
+<script>
+    var lis=document.querySelectorAll("li");
+    var divs=document.querySelectorAll('div');
+    // 写一个方法，去实现选项卡的原理
+    function tab(n) {
+        for (var i=0;i<lis.length;i++){
+            lis[i].className="";
+            divs[i].className="";
+        }
+        // 当前点击的li
+        lis[n].className="cur";
+        divs[n].className="cur";
+    }
+    for (var i=0;i<lis.length;i++){
+        lis[i].index=i;
+        lis[i].onclick=function () {
+            tab(this.index);// i=3 i永远等于3
+        };
+    }
+    /*lis[0].onclick=function () {
+        tab(0)
+    };
+    lis[1].onclick=function () {
+        tab(1)
+    };
+    lis[2].onclick=function () {
+        tab(2)
+    };*/
+</script>
+</body>
+</html>

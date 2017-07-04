@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //    function f1() {
+    //
+    //    }
+    //    console.log(f1());
+    //
+    //    var ary = [1, 2, 3];
+    //    console.log(ary[3]);
+    //    undefined = 5;
+    //    console.log(undefined);
+    //
+    //    console.log(null === undefined);
+    //
+    //    console.log(Number(undefined));
+    //    console.log(Number(null));
+    //
+    //    var num = 51.1236
+    //    console.log(num.toFixed(3));
+    //    console.log(num.toExponential(1));
+    //    console.log(num.toPrecision(1));
+    //    console.log(num.toLocaleString(1));
+    //    var numObj = new Number(5);
+    //    console.log(num instanceof Number);
+    //    console.log(numObj instanceof Number);
+    //    console.log([].toString());
+    //    console.log([].valueOf());
+    //    console.log(parseInt([1, 2, 3]))
+    //
+    //
+    //    var a = [1, 2, 3, 4, 5, 6];
+    //    var b = a.splice(2, 2);
+    //    console.log(a, b);
+    //
+    //    console.log(5 == new Number(5));
+    //    console.log(5 instanceof Number);
+    //
+    //    console.log(Number("53a"));
+
+    //    function FF() {
+    //
+    //       this.ff = 1;
+    //    }
+    //    function EE() {
+    //
+    //        this.ee = 2;
+    //    }
+    //    FF.prototype = new EE();
+    //    var f = new FF();
+    //
+    //    console.log(f.ee);
+    //    alert(sum(4, 5));
+    //    var sum = function (a, b) {
+    //        return a + b;
+    //    }
+    //    function factorial(num) {
+    //        if (num <= 1) {
+    //            return 1;
+    //        } else {
+    //            return num * factorial(num - 1);
+    //        }
+    //    }
+    //    var trueFactorial = factorial;
+    //    factorial = function () {
+    //        return 0;
+    //    }
+    //    alert(trueFactorial(5));
+    //    alert(factorial(5));
+    //    function isType(value, type) {
+    //        var reg = new RegExp("^\\[object " + type + "\\]$", "i");
+    //        return reg.test(Object.prototype.toString.call(value));
+    //    }
+    //    var ary = [];
+    //
+    //    var flag = isType(ary, "array");
+    //    console.log(flag);//->true说名是数组,false说明不是数组 ->true
+    //    flag = isType(1, "string");
+    //    console.log(flag);//->false
+    //
+    //
+    //    ~function () {
+    //        var utils = {}, numObj = {
+    //            isNum: "Number",
+    //            isStr: "String",
+    //            isBoo: "Boolean",
+    //            isNul: "Null",
+    //            isUnd: "Undefined",
+    //            isObj: "Object",
+    //            isAry: "Array",
+    //            isFun: "Function",
+    //            isReg: "RegExp",
+    //            isDate: "Date"
+    //        };
+    //        var isType = function () {
+    //            var outerArg = arguments[0];
+    //            return function () {
+    //                var innerArg = arguments[0], reg = new RegExp("^\\[object " + outerArg + "\\]$", "i");
+    //                return reg.test(Object.prototype.toString.call(innerArg));
+    //            }
+    //        };
+    //        for (var key in numObj) {
+    //            if (numObj.hasOwnProperty(key)) {
+    //                utils[key] = isType(numObj[key]);
+    //            }
+    //        }
+    //        window.$type = utils;
+    //    }();
+    //    //console.log($type);
+    //
+    //    var ary = [];
+    //    console.log($type.isAry(ary));//->true
+    //    console.log($type.isFun(ary));//->false
+    //
+    //    var reg = /\d+/g;
+    //    var str = "zhufeng";
+    //    reg.exec(str);//null
+    //    var str = "zhufeng2017peixunjs6html5css3";
+    //    console.log(reg.exec(str));
+    //    console.log(reg.exec(str));
+    //
+    //
+    //    var reg = /\d{1,4}/g;
+    //    var str = "a12b123c1234";
+    //    console.log(reg.exec(str));
+    //    console.log(reg.exec(str));
+    //    console.log(reg.exec(str));
+    //
+    //
+    //    var reg = /\d{1,4}?/g;
+    //    var str = "a12b123c1234";
+    //    console.log(reg.exec(str));
+    //    console.log(reg.exec(str));
+    //
+    //
+    //    var reg = /([a-zA-z]+)(\d+)(?:,?)/g;
+    //    var str = "Js12,Html34,Css56,Node78,Vue90";
+    //    console.log(reg.exec(str));
+    //
+    //
+    //    var obj1 = {};
+    //    obj1.name2 = "张三";
+    //    var str1 = "test";
+    //    str1.name2 = "李四";
+    ////    alert(obj1.name2 + " " + str1.name2);
+    //
+    //    var obj = {a:1};
+    //    function f1() {
+    //
+    //    }
+    //    var values = [1,2];
+    //    var num = 5;
+    //    console.log(values.toString(2),f1.toString());
+    //
+    //    var colors = ["red", "green", "blue", "yellow", "purple"];
+    //    var colors2 = colors.slice(1);
+    //    var colors3 = colors.slice(1,4);
+    //    var val =  "alpha(opacity=30.3)"
+    //    var reg=/^alpha\(opacity=(\d+(?:\.\d+)?)\)$/;
+    //    console.log(reg);
+    //    //    reg.exec(val)
+    //    console.log( reg.exec(val))
+    //    var url = "localhost?key1=val1&key2=val2&key3=val3";
+    //    String.prototype.getParam = function (key) {
+    //        var reg = new RegExp(key+"=(\\w+)");
+    //        return reg.exec(this)[1];
+    //    }
+    //    console.log(url.getParam("key2"));
+
+    //    var a = 0, b = 0;
+    //    function A(a) {
+    //        A = function (b) {
+    //            console.log(a + b++);
+    //        };
+    //        console.log(a);
+    //    }
+    //    A(1);
+    //    A(12);
+    //    function fun(n, o) {// n =0
+    //        console.log(o);//每次都输出第二个参数
+    //        return {//返回一个对象
+    //            fun: function (m) {//对象中包含函数
+    //                return fun(m, n);//函数内保护了外层函数第一个参数
+    //            }
+    //        }
+    //    }
+    //    var a = fun(0);//undefined
+    //    a.fun(1); // 0
+    //    a.fun(2);//0
+    //    a.fun(3);//0
+    //    var b = fun(0).fun(1).fun(2).fun(3); // undefined 0 1 2
+    //    // n = 0 1 2 3
+    //    var c = fun(0).fun(1); // undefined 0
+    //    // n = 1
+    //    c.fun(2); //  1
+    //    c.fun(3);//2
+    //    c.fun(4);//2
+    //    var funs = (function () {
+    //        for (var i = 0, arr = []; i < 3; i++) {
+    //            arr[i] = function () {
+    //                console.log(i)
+    //            };
+    //        }//i=3
+    //        return arr;
+    //    })();
+    ////funs:[(i=3)
+    //// function(){console.log(i)},
+    //// function(){console.log(i)},
+    //// function(){console.log(i)}
+    //// ]
+    //    funs[0]();//3
+    //    funs[1]();//3
+    //    funs[2]();//3
+
+//    var is = function (obj, type) {
+//        var toString = Object.prototype.toString;
+//        var _baseTypes = {'undefined': 'undefined', 'number': 'number', 'boolean': 'boolean', 'string': 'string'};
+//        return (_baseTypes[typeof obj] === type) ||
+//            (type === "Null" && obj === null) ||
+//            (type === 'Function' && "object" === typeof document.getElementById ?
+//                /^\s*\bfunction\b/.test("" + obj) : toString.call(obj).slice(8, -1) === type) ||
+//            obj instanceof type;
+//    };
+    var a = "astring";
+    var c;
+    var d;
+    var e =1;
+    console.log(a + c);
+    console.log(d + c);
+</script>
+</html>

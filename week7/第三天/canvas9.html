@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="draw" width="250" height="320" style="background-color: #ccc;"></canvas>
+	</body>
+
+</html>
+<script type="text/javascript">
+	var draw = document.getElementById("draw");
+	var cvs = draw.getContext("2d");
+	var img = new Image;
+	img.src = "img/11.png";
+	img.onload = function() {
+		var width = this.width / 10;
+		var height = this.height;
+		var i = 0;
+		window.setInterval(function() {
+			cvs.clearRect(0,0,draw.width,draw.height);
+			cvs.drawImage(img, i * width, 0, width, height, 0, 0, width, height);
+			if(i == 9) {
+				i = 0
+			} else {
+				i++
+			}
+		}, 100);
+	}
+</script>

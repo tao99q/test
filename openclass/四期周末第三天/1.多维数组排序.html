@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var ary=[{name:"高大秀",age:18},{name:"王安妮",age
+    :19},{name:"孟倩",age:26},{name:"李睿",age:4}];
+    var a=[11,2,5,3];
+    a.sort(function (a,b) {
+        //a,b当前项和后又一项
+        return a-b;
+    });
+	console.log(a);
+	console.log([1,2,3].constructor===Array);
+//    ary.sort(function (a,b) {
+//        return a.age-b.age;
+//    });
+//    console.log(ary)
+    //console.log(ary[0].name.localeCompare(ary[1].name));//1
+    ary.sort(function (a,b) {
+        return a.name.localeCompare(b.name)
+    });
+    console.log(ary)
+	
+</script>
+</body>
+</html>

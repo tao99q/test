@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1)
+        }
+
+        #box {
+            width: 300px;
+            height: 100px;
+            background-color: red;
+
+        }
+    </style>
+</head>
+<body id="body">
+<div id="box">
+
+</div>
+</body>
+<script>
+    var body = document.getElementById("body");
+    var box = document.getElementById("box");
+    //google浏览器
+    //    body.onmousewheel = function (e) {
+    ////        console.log(e.wheelDelta);//大于0是向上，小于0是向下
+    //    }
+    //火狐中没有onmousewheel这个事件
+    //DOMMouseScroll 必须用DOM 2级事件绑定
+    function addWheel(ele, fn) {
+        //鼠标放在ele上什么事，
+        function wheel(e) {
+            e = e || window.event;
+            var bOk = false;
+            if (e.wheelDelta) {
+                bOk = e.wheelDelta < 0 ? false : true;
+            } else {
+                bOk = e.detail < 0 ? true : false;
+            }
+            fn && fn.call(ele, bOk);
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        }
+
+        if (window.navigator.userAgent.toLowerCase().indexOf("firefox") >= 0) {
+            ele.addEventListener("DOMMouseScroll", wheel);
+        } else {
+            ele.onmousewheel = wheel;
+        }
+    }
+    //    addWheel(body, function (bOk) {
+    //        //bOk：true 向上滚动 false:向下滚动
+    //        var bc = window.getComputedStyle(body).backgroundColor;
+    //        bc = /^rgba\(0, 0, 0, (0?(?:.\d+)?)\)$/g.exec(bc)[1];
+    ////        console.log(bc);
+    //        if (bOk) {
+    //            this.style.backgroundColor = "rgba(0, 0, 0, " + (bc += 0.1) + ")";
+    //        } else {
+    //
+    //        }
+    //    });
+
+    addWheel(box, function (bOk) {
+        //bOk：true 向上滚动 false:向下滚动
+//        var height = parseFloat(window.getComputedStyle(this).height);
+        if (bOk) {
+            this.style.height = (this.offsetHeight + 10) + "px";
+        } else {
+            this.style.height = (this.offsetHeight - 10) + "px";
+        }
+        console.log(this.style.height);
+    });
+</script>
+</html>

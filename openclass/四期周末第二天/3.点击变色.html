@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            /*background: red;*/
+            /*opacity: 1;*/
+        }
+    </style>
+</head>
+<body>
+<div id="box"  style=""></div>
+</body>
+</html>
+<script type="text/javascript">
+
+    var box=document.getElementById("box");
+    //console.log(getComputedStyle(box));
+    //console.log(box.style);
+//    function tab() {
+//        var bg=box.style.backgroundColor;
+//        console.log(bg);
+//        if(!bg){
+//            box.style.backgroundColor="red";
+//        }else if(bg=="red"){
+//            box.style.backgroundColor="orange";
+//        }else if(bg=="orange"){
+//            box.style.backgroundColor="yellow";
+//        }else if(bg=="yellow"){
+//            box.style.backgroundColor="green";
+//        }else if(bg=="green"){
+//            box.style.backgroundColor="blue";
+//        }else  if(bg=="blue"){
+//            box.style.backgroundColor="skyblue";
+//        }else if(bg=="skyblue") {
+//            box.style.backgroundColor="plum";
+//        }else {
+//            box.style.backgroundColor="red";
+//        }
+//    }
+//    box.flag=1;
+//    var timer=null;
+//    box.onclick=function () {
+//        if(box.flag){
+//            timer=window.setInterval(tab,300);
+//            box.flag=0;
+//        }else {
+//            window.clearInterval(timer);
+//            box.flag=1;
+//        }
+//    };
+//    //window.setInterval(tab,300);
+//红 绿 黄 蓝 红
+    box.onclick=function () {
+        var bg=box.style.backgroundColor;//""
+        console.log(bg);
+        if(bg==""){//''==''
+            //!bg是true就是bg==""
+           box.style.backgroundColor="red" ;
+        }else  if(bg=="red"){
+            box.style.backgroundColor="green" ;
+        }else if(bg=="green"){
+            box.style.backgroundColor="yellow" ;
+        }else  if(bg=="yellow"){
+            box.style.backgroundColor="blue" ;
+        }else {
+            box.style.backgroundColor="red" ;
+        }
+    }
+</script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body id="body">
+
+</body>
+<script>
+    var body = document.getElementById("body");
+    function on(ele, type, callback, bool) {
+        //ele当前元素，type:事件类型 callback:绑定的函数,bool：执行事件阶段
+        bool = bool || false;
+        if (ele.addEventListener) {
+            ele.addEventListener(type, callback, bool);
+        } else {
+            ele[type + "Event"] = callback;
+            ele.attachEvent("on" + type, function () {
+                run.call(ele);
+            });
+        }
+
+    }
+
+    function run(e) {
+        //事件对象也存在兼容性，在低版本浏览器中，不会给函数传参数，事件对象存在window.event中
+        //e = window.event this = ele
+
+        e = e || window.event;
+        //e.target 事件源存在兼容性
+        e.target = e.target || e.srcElement;
+
+        //阻止默认行为在IE下没有preventDefault()，使用e.returnValue
+        if (e.preventDefault) {
+
+
+            e.preventDefault = function () {
+                e.returnValue = false;
+            }
+        }
+
+
+        //阻止冒泡
+        e.stopPropagation = function () {
+            e.cancelBubble = true;
+        }
+        //pageX , pageY 在低版本浏览器中没有
+        e.pageX = (document.documentElement.scrollLeft || document.body.scrollLeft) + e.clientX;
+        e.pageY = (document.documentElement.scrollTop || document.body.scrollTop) + e.clientY;
+        var callback = this[e.type + "Event"];
+        callback.call(this,e);
+
+    }
+
+
+    function f1(e) {
+        alert("f1");
+    }
+    function f2() {
+        alert("f2");
+    }
+    function f3() {
+        alert("f3");
+    }
+    function f4() {
+        alert("f4");
+    }
+    function f5() {
+        alert("f5");
+    }
+    function f6(e) {
+//        alert("false");
+//        e.preventDefault();
+        alert("f6");
+    }
+
+    on(body, "click", f1);
+    on(body, "click", f1);
+    on(body, "click", f2);
+    on(body, "click", f3);
+    on(body, "click", f4);
+    on(body, "click", f5);
+    on(body, "click", f6);
+</script>
+</html>

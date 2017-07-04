@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5.条纹背景</title>
+    <style>
+        div{
+            margin: 10px 10px;
+        }
+        .div1 {
+            width: 400px;
+            height: 10px;
+            background: repeating-linear-gradient(45deg,#fb3, #fb3 10px, #58a 0, #58a 20px);
+            /*background-size: 42px 42px;*/
+        }
+        .div2 {
+            width: 400px;
+            height: 10px;
+            background: #58a;
+            background-image: repeating-linear-gradient(45deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,.1) 15px,transparent 0, transparent 30px);
+        }
+
+    </style>
+</head>
+<body>
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+</body>
+</html>

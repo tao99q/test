@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="content">
+
+</ul>
+<script>
+    //    "use strict";
+    /*
+     console.log(a);//undefined
+     var a=0;
+     console.log(a);//0
+
+     //1.没有变量的提声(没有预解释)
+     //console.log(a);//a is not defined
+     let a=0;
+     console.log(a);
+
+     function fn() {
+     console.log(a);//a is not defined
+     let a;
+     };
+     fn();
+     function fn1() {
+     console.log(a);
+     }
+     fn1()
+
+     //2. 不能重复定义
+     var a=1;
+     var a=2;
+     console.log(a);
+
+     let a=1;
+     //let a=2;//'a' has already been declared
+     //function a() {};//'a' has already been declared
+     function fn(n) {
+     let n=a;
+     }
+     fn(1);
+
+     //3.虽然不进行预解释但是代码执行之前也会先把let定义的变量过滤一遍，一旦不合法，就直接报错，代码也不执行了
+     console.log(a);
+     let a=1;
+     let a=2;
+     console.log(a);
+     let a=1;
+     var a=2;
+     */
+    //    var person = {name:'zfpx',address:{province:'江苏',city:'南京'}};
+    //    var {name,address:{province,city}} = person;
+    //    console.log(name, province, city);
+
+    //let obj = {p: ['Hello',{ y: 'World' }]};
+    //
+    //let { p: [x, { y }] } = obj;
+//    var users = [{id: 1, name: 'zpfx1'}, {id: 2, name: 'zpfx2'}, {id: 3, name: 'zpfx3'}];
+//    var content = document.getElementById("content");
+//    var str = ``;
+//    for(var i=0;i<users.length;i++){
+//        str +=`<li>${users[i]["id"]}:${users[i]["name"]}</li>`;
+//    }
+//    content.innerHTML = str;
+//
+//
+//    var arr = [6,3,1,5,8];
+//    /// TODO
+//    var fun = (ary)=>ary.sort();
+//    arr = fun(arr);
+//    console.log(arr); //输出 1 3 5 6 8
+
+    function Timer() {
+        this.s1 = 0;
+        this.s2 = 0;
+        // 箭头函数
+        setInterval(() => this.s1++, 1000);
+        // 普通函数
+        setInterval(function () {
+            this.s2++;
+        }, 1000);
+    }
+
+    var timer = new Timer();
+
+    setTimeout(() => console.log('s1: ', timer.s1), 3100);//输出多少
+    setTimeout(() => console.log('s2: ', timer.s2), 3100);//输出多少
+</script>
+</body>
+</html>

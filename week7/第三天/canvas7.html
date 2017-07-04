@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="draw" width="800" height="600" style="border: 2px solid darkblue;"></canvas>
+	</body>
+	<!--
+		注意：平移，缩放，旋转这些都是对原始坐标操作的
+		
+		平移：cvs.translate(x,y);
+		x:坐标原点向x轴平移的距离
+		y:坐标原点向y轴平移的距离
+		缩放：vas.scale(x0,y0);
+		x0:x轴按照x0的比例缩放
+		y0:y轴按照y0的比例缩放
+		旋转：cvs.rotate(angle);
+		angle:坐标轴转的角度(跟画圆的弧度计算是一样的)
+	-->
+	<script type="text/javascript">
+		var draw = document.getElementById("draw");
+		var cvs = draw.getContext("2d");
+		function draw1(){
+			cvs.fillStyle="#0000FF";
+			cvs.fillRect(0,0,200,100);
+			
+			cvs.translate(50,0);
+			//cvs.translate(50,0)
+			cvs.fillStyle="#800080";
+			cvs.fillRect(-50,0,100,50)
+		}
+//		draw1();
+		function draw2(){
+			cvs.scale(1,3);
+			cvs.fillStyle="#800080";
+			cvs.fillRect(100,50,100,50)
+		}
+//		draw2();
+		function draw3(){
+			cvs.translate(100,0)
+			cvs.rotate(Math.PI/2);
+			cvs.fillStyle="#800080";
+			cvs.fillRect(100,0,100,50)
+		}
+		draw3();
+	</script>
+
+</html>

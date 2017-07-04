@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            cursor: move;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+</body>
+<script>
+    var box = document.getElementById("box");
+    box.onmousedown = function (e) {
+        this.L = e.clientX - this.offsetLeft;
+        this.T = e.clientY - this.offsetTop;
+        document.onmousemove = function (e) {
+            var l = e.clientX - box.L;
+            var t = e.clientY - box.T;
+            box.style.left = l + "px";
+            box.style.top = t + "px";
+            //如果当前盒子中有其它元素，必须阻止下默认行为
+            e.preventDefault();
+        };
+        document.onmouseup = function (e) {
+            this.onmousemove = null;
+            this.onmouseup = null;
+        };
+    };
+
+</script>
+</html>

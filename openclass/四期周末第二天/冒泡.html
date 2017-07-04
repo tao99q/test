@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var ary = [1,3,2,5,7,9,0,10,41,6];
+    console.log(ary);
+    var sum= 0;
+    for(var i=0;i<ary.length-1;i++){
+        for (var j=i+1;j<ary.length;j++){
+            sum++;
+            if(ary[i]>ary[j]){
+                var temp = ary[i];
+                ary[i] = ary[j];
+                ary[j] = temp;
+            }
+        }
+    }
+    console.log(ary);
+    console.log(sum);
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    /*
+    js 盒子模型：JS提供了一系列属性和方法来获取css盒子模型
+    一共13个属性
+    内容的height/width
+    如果在css样式中给元素设置了宽高，那么内容的宽高就是你设置的宽高
+    如果没有设置获取出来的就是真实内容的宽高
+     client 系列
+    1.clientWidth/clientHeight  内容宽+左右/内容高 + 上下 padding
+    2.clientLeft/clientTop; 左边框/上边框
+    offset 系列
+
+    3.offsetHeight/offsetWidth :  clientHeight+上 下border/ clientWidth + 左 右border
+    4.offsetParent:父级参照物
+        从父亲节点开始找，找到被定位的元素(postion:absolute,relative,fixed),如果找到被定位的元素，就把它当做父级参照物，一直找到body还没有就是把body当做父级参照物
+    5.offsetLeft/offsetTop:当前元素距离父级参照物的左偏移量/上偏移量
+
+     scoll系列 滚动条
+    6.scrollWidth/scrollHeight 如果内容有溢出就是真实内容的宽度/高度 + 左/上 padding，没有溢出情况下和client一样的
+    7.scrollLeft/scrollTop：滚动条水平/垂直滚过的距离
+
+    注：1.这13属性中只有scollTop和scrollLeft可以修改值的，其它都是只读。
+    2.获取出来的值都是数字，没有单位，都是经过浏览器计算得到的，一般浏览器都是四舍五入。
+    3.scrollLeft/scrollTop，有最小值0，就算设置负值，默认值也是0。
+
+     */
+
+    //当前浏览器窗口一改屏的宽高
+    document.documentElement.clientWidth||document.body.clientWidth;
+    document.documentElement.clientHeight||document.body.clientHeight;
+
+    //整个网页的宽高
+    document.documentElement.scrollWidth||document.body.scrollWidth;
+    document.documentElement.scrollHeight||document.body.scrollHeight;
+
+    //获取当前浏览器的盒子模型信息(当前浏览器窗口一屏的宽高，整个网页的宽高，获取设置scrollTop和scrollLeft)
+    function win(attr,value) {
+        if (arguments.length ===1){
+            return document.documentElement[attr]||document.body[attr];
+        }else{
+            document.documentElement[attr] = value;
+            document.body[attr] = value;
+        }
+
+    }
+    win("clientHeight");
+    win("scrollHeight");
+    win("scrollTop",1000);
+    offsetHeight+offsetTop
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7.函数练习</title>
+</head>
+<body>
+<script>
+    // 定义方法：传入任意值，判断这个值既可以被2整除又可以被3整除我就进行累加，如果不行，我就不累加
+    function total() {
+        var sum=null;
+        for (var i=0;i<arguments.length;i++){
+            if (arguments[i] % 2===0&&arguments[i]%3===0){
+                sum+=Number(arguments[i]);
+            }
+        }
+        console.log(sum);
+    }
+    total(2,"4",[3,4],"18","12");
+
+
+
+</script>
+</body>
+</html>

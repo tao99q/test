@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点</title>
+</head>
+<body>
+<!--
+注意三个属性
+1.元素节点
+nodeName:大写标签名
+nodeType: 1
+nodeValue: null
+2.文本节点
+nodeName:#text
+nodeType: 3
+nodeValue: 文本内容
+3.注释节点
+nodeName: #comment
+nodeType: 8
+nodeValue: 注释内容
+4.document
+nodeName:#document
+nodeType:9
+nodeValue:null
+-->
+<div id="box1">
+    <!--hah-->
+    <p>11</p>
+    <span class="span1">111</span>
+</div>
+<script type="text/javascript">
+    var box=document.getElementById("box1");
+    var span1=document.getElementsByClassName("span1")[0];
+    //节点：在HTML中所有的东西都是节点
+    //1.curEle.childNodes：获取curEle所有的子节点，兼容所有浏览器,返回值是类数组
+    console.log(box.childNodes);
+    //2.curEle.children获取curEle的所有元素子节点，但是IE6-8不兼容，返回值是类数组
+    console.log(box.children);
+    //3.curEle.parentNode()获取父亲节点，肯定是元素节点,返回值是一个元素
+    console.log(box.parentNode);
+    //4.curEle.previousSibling获取上一个哥哥节点 兼容所有浏览器
+    console.log(span1.previousSibling)
+    //5.curEle.previousElementSibling获取上一个哥哥元素节点 兼容问题在IE6-8不兼容
+    function prev(curEle) {
+        //1.先判断有没有这个方法，有的话直接用，没有想办法
+        if("previousElementSibling" in curEle){
+            return curEle.previousElementSibling;
+        }else {
+            //先找一个哥哥节点，存在并且不是元素节点的话就继续往上找
+            var pre=curEle.previousSibling;
+            while (pre&&pre.nodeType!==1){
+                pre=pre.previousSibling;
+            }
+            return pre;
+        }
+    }
+    console.log(prev(span1));
+    //6.nextSibling 获取下一个弟弟节点，兼容所有浏览器
+    //7.nextElementSibling 获取下一个弟弟元素节点 不兼容IE 6-8
+    function next(curEle) {
+        if("nextElementSibling" in curEle){
+            return curEle.nextElementSibling;
+        }else {
+            var next=curEle.nextSibling;
+            while (next&&next.nodeType!==1){
+                next=next.nextSibling;
+            }
+            return next
+        }
+    }
+    console.log(next(span1));
+    //获取所有的哥哥
+    function prevAll(curEle) {
+        //1.获取一个哥哥
+        var pre=prev(curEle);
+        //2.准备一个数组
+        var ary=[];
+        while (pre){
+            //3.判断有哥哥也就是pre存在的话，就放到数组ary中
+            ary.unshift(pre);
+            //4.继续获取哥哥的上一个哥哥
+            pre=prev(pre);
+        }
+        return ary
+    }
+    function nextAll(curEle) {
+        var nex=next(curEle);
+        var ary=[];
+        while (nex){
+            ary.push(nex);
+            nex=next(nex)
+        }
+        return ary
+    }
+    //获取所有的兄弟
+    function siblings(curEle) {
+        return prevAll(curEle).concat(curEle,nextAll(curEle))
+    }
+    //获取当前元素的索引
+    function index(curEle) {
+        return prevAll(curEle).length
+    }
+</script>
+</body>
+</html>

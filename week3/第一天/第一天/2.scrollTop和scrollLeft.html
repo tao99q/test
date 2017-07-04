@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body,ul,li{
+            padding: 0;
+            margin: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #news{
+            width: 300px;
+            margin: 20px auto;
+            border: 2px dashed #ffb515;
+            text-align: center;
+            height: 200px;
+            overflow: auto;
+        }
+        #news li{
+            line-height: 50px;
+            font-size: 16px;
+            color: #666;
+            width: 200px;
+        }
+        #news li:hover{
+            background-color: beige;
+            color: coral;
+        }
+    </style>
+</head>
+<body>
+<ul id="news">
+    <li>新闻1</li>
+    <li>新闻2</li>
+    <li>新闻3</li>
+    <li>新闻4</li>
+    <li>新闻5</li>
+    <li>新闻6</li>
+    <li>新闻7</li>
+    <li>新闻8</li>
+    <li>新闻9</li>
+    <li>新闻10</li>
+</ul>
+</body>
+<script type="text/javascript">
+    var news = document.getElementById("news");
+//    news.scrollTop = 1000;
+    //onscroll 触发滚动条事件
+    news.onscroll = function () {
+        console.log(this.scrollTop);
+    }
+</script>
+</html>

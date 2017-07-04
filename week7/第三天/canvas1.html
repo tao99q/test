@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--
+			canvas: H5新标签，在页面上绘制图形用的（通常称他画布）
+			canvas只是一个容器，我们用JS脚本来控制他		
+		-->
+		<canvas id="draw" width="600" height="500" style="border:1px solid #ccc"></canvas>
+	</body>
+	<script type="text/javascript">
+		/*
+				//获取出canvas标签
+				var draw=document.getElementById("draw");
+				//console.dir(draw);
+				//设置绘制环境
+				var cvs=draw.getContext("2d");//"2d" 平面图
+				//cvs 这个就是你的画板，接下下来就可以在CVS操作，进行绘制
+				
+				console.dir(cvs)
+				
+				cvs.fillStyle;//填充的样式
+				cvs.strokeStyle;//笔触颜色（边框的颜色）
+				cvs.lineWidth;//边框的宽度
+				
+				//绘制图形有两种方式
+				cvs.fill();//填充
+				cvs.stroke();//边框
+				
+				//颜色值：
+				//1.颜色名字：“red”
+				//2.十六进制：#ff6700
+				//3.三色值：rgb(123,234,120)
+				//4.四色值：rgba(123,234,120,.3)
+				
+				*/
+	</script>
+
+</html>
+<script type="text/javascript">
+	//坐标：以画布为基准， 距离画布的上边的距离是y坐标值。距离画布的左边的距离是x的坐标值
+	//绘制线条
+	//cvs.moveTo(x,y)  起始点的坐标
+	//cvs.lineTo(x,y)  结束点坐标
+	//如果没有moveTo就把上一个挨着的lineTo作为起始坐标，
+	//加入第一个不是moveTo而是lineTo，那么lineTo就是起始坐标
+
+	//cvs.beginPath()开始一个新的路径
+	//cvs.closePath();关闭当前路径 自动闭合，从结束坐标值到起始坐标自动连接
+	function draw1() {
+		var draw = document.getElementById("draw");
+		var cvs = draw.getContext("2d");
+		cvs.beginPath();
+		cvs.moveTo(50,50);
+		cvs.lineTo(150,50);
+		cvs.closePath();
+		cvs.strokeStyle="red";
+		cvs.lineWidth=20;
+		cvs.stroke();//以边框的形式显示出来
+	}
+	//draw1();
+	
+	function draw2(){
+		var draw=document.getElementById("draw");
+		var cvs=draw.getContext("2d");
+		cvs.beginPath();
+		cvs.lineTo(80,120);
+		cvs.lineTo(80,240);
+		cvs.lineTo(200,240);
+		cvs.closePath();
+		cvs.strokeStyle="#EC568C";
+		cvs.lineWidth=10;
+		cvs.stroke();
+	}
+	//draw2();
+	
+	
+	//css中有圆角border-radius,canvas中也可以实现效果
+	//设置线条交汇处的样式
+	//cvs.lineJoin 他有三个属性   尖角miter 斜角bevel  圆角round
+	//设置一条线段两端点的样式
+	//cvs.lineCap 三个属性  butt(默认 平) round(圆角) square(方角)
+	
+	
+	
+	function draw3(){
+		var draw=document.getElementById("draw");
+		var cvs=draw.getContext("2d");
+		cvs.beginPath();
+		cvs.lineCap="round";
+		cvs.moveTo(50,50);
+		cvs.lineTo(250,50);
+		//cvs.closePath();加上这句话，没有端点设置的效果
+		cvs.lineWidth=20;
+		cvs.strokeStyle="red";
+		cvs.stroke();
+	}
+	//draw3();
+	
+	function draw4(){
+		var draw=document.getElementById("draw");
+		var cvs=draw.getContext("2d");
+		cvs.beginPath();
+		cvs.lineCap = "round";
+        cvs.lineJoin = "round";
+		cvs.moveTo(200,100);
+		cvs.lineTo(100,250);
+		cvs.lineTo(300,250);
+
+		cvs.closePath();
+		cvs.strokeStyle="#0000FF";
+		cvs.lineWidth=20;
+//		cvs.lineJoin="bevel";
+		cvs.stroke();
+	}
+	draw1();
+</script>

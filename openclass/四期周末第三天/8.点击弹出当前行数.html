@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8.点击弹出当前行数</title>
+    <style>
+        li{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>我是第1项</li>
+    <li>我是第2项</li>
+    <li>我是第3项</li>
+    <li>我是第4项</li>
+    <li>我是第5项</li>
+</ul>
+<script>
+    var lis=document.querySelectorAll('li');
+    for (var i=0;i<lis.length;i++){
+        lis[i].zfpx=i+1;
+        lis[i].onclick=function () {
+            alert('我是第'+this.zfpx+'个li')
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    // 点击li弹出“我是第几个li”
+    /*var lis=document.querySelectorAll('li');//[li,li,li,li,li]
+    for (var i=0;i<lis.length;i++){
+        // 变量 pass
+        // 对象的属性可以储存值
+        /!*lis[0].zfpx=0;
+        lis[1].zfpx=1;
+        lis[2].zfpx=2;
+        lis[3].zfpx=3;
+        lis[4].zfpx=4;*!/
+        lis[i].zfpx=i+1;
+        lis[i].onclick=function () {
+            alert('我是第'+this.zfpx+'个li');
+        }
+    }*/
+    // lis[0].onclick=xxff00;
+    /*lis[0].onclick=function () {
+        alert('我是第1个li')
+    }
+    lis[1].onclick=function () {
+        alert('我是第2个li')
+    }
+    lis[2].onclick=function () {
+        alert('我是第3个li')
+    }
+    lis[3].onclick=function () {
+        alert('我是第4个li')
+    }
+    lis[4].onclick=function () {
+        alert('我是第5个li')
+    }
+    i=5
+    */
+
+
+
+
+
+
+
+    /*for (var i=0;i<lis.length;i++){
+        lis[i].onclick=function () {
+            alert(this.innerHTML);
+        }
+    }*/
+
+    /*lis[0].onclick=function () {
+        alert(this.innerHTML);
+    }
+    lis[1].onclick=function () {
+        alert(this.innerHTML);
+    }
+    lis[2].onclick=function () {
+        alert(this.innerHTML);
+    }
+    lis[3].onclick=function () {
+        alert(this.innerHTML);
+    }
+    lis[4].onclick=function () {
+        alert(this.innerHTML);
+    }*/
+</script>
+</body>
+</html>

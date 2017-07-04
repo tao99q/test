@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取url参数</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    String.prototype.getParam = function (key) {
+        var str = this.split("?")[1];
+        str = str.replace(/&/g, "',");
+        str = str.replace(/=/g, ":'");
+        var obj = eval("({" + str + "'})");
+        for (var x in obj) {
+            if (key == x) {
+                return obj[key];
+            }
+        }
+    };
+    var url = "locallhost?key1=val1&key2=val2&key3=val3";
+    console.log(url.getParam("key3"));
+
+
+    String.prototype.getParam = function (key) {
+        var reg = new RegExp(key + "=(\\w+)");
+        return reg.exec(this)[1];
+    };
+    url.getParam("key3");
+    String.prototype.getParam = function (key) {
+        var val = null;
+        this.replace(/(\w+)=(\w+)/g, function () {
+            if (arguments[1] == key)
+                val = arguments[2];
+        });
+        return val;
+    };
+    console.log(url.getParam("key3"));//val3
+
+</script>
+</html>

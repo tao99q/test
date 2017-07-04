@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            cursor: move;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+</body>
+<script src="js/public.js"></script>
+<script src="js/event.js"></script>
+<script>
+    var box = document.getElementById("box");
+    function move(e) {
+        var l = e.pageX - this.L;
+        var t = e.pageY - this.T;
+        console.log("left:"+l,"top:"+t);
+        public.css(this, {left: l, top: t});
+        e.preventDefault();
+    }
+    function up() {
+        if (this.releaseCapture) {
+            this.releaseCapture();
+            off(this, "mousemove", move);
+            off(this, "mouseup", up);
+        } else {
+            off(document, "mousemove", this._move);
+            off(document, "mouseup", this._up);
+        }
+    }
+    function down(e) {
+        this.L = e.pageX - public.offset(this).left;
+        this.T = e.pageY - public.offset(this).top;
+        if (this.setCapture) {
+            this.setCapture();
+            on(this, "mousemove", move);
+            on(this, "mouseup", up);
+        } else {
+            var _this = box;
+            this._move = function (e) {
+                move.call(_this, e);
+            }
+            this._up = function () {
+                up.call(_this)
+            }
+            on(document, "mousemove", this._move);
+            on(document, "mouseup", this._up);
+        }
+
+    }
+    on(box, "mousedown", down, false);
+</script>
+</html>

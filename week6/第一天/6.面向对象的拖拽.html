@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象版的拖拽</title>
+    <style>
+        html, body, div, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .box {
+            width: 800px;
+            height: 600px;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            margin: -300px 0 0 -400px;
+            background-color: white;
+        }
+
+        div img {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+
+        div{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 50px;
+            top:50px;
+            cursor: move;
+        }
+        #box2{
+            left: 200px;
+        }
+        #box3{
+            left: 350px;
+        }
+        #box4{
+            left: 500px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box1"><img src="img/2.jpg"></div>
+    <div id="box2"><img src="img/3.jpg"></div>
+    <div id="box3"><img src="img/apple_1_bigger.jpg"></div>
+    <div id="box4"><img src="img/apple_2_bigger.jpg"></div>
+
+<script src="js/Event第二次封装.js"></script>
+<!--<script src="js/Drag纯净版.js"></script>-->
+<script src="js/Drag第一版.js"></script>
+<script type="text/javascript">
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    var box3 = document.getElementById("box3");
+    var box4 = document.getElementById("box4");
+    var drag1 = new Drag(box1);
+    drag1.range({minL: 0, maxL: 500, minT: 0, maxT: 500})
+    var drag2 = new Drag(box2);
+    drag2.range({minL: 0, maxL: 400, minT: 0, maxT: 400})
+    var drag3 = new Drag(box3);
+    drag3.range({minL: 0, maxL: 300, minT: 0, maxT: 300})
+    var drag4 = new Drag(box4);
+    drag4.range({minL: 0, maxL: 200, minT: 0, maxT: 200})
+
+</script>
+</body>
+</html>

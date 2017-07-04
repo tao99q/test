@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box1">1111</div>
+<script type="text/javascript">
+    //1.动态创建标签
+    var oDiv=document.createElement("div");
+    oDiv.innerHTML="oDiv";
+    //2.appendChild()将oDiv放到body中的最后面的
+    document.body.appendChild(oDiv);
+    //3.父级元素.insertBefore(添加的元素，原来的元素),在页面上之前有，现在位置移动了
+    var box=document.getElementsByClassName("box1")[0];
+    document.body.insertBefore(oDiv,box);
+
+    // in 方法 判断属性在不在对象里面 返回值是true false
+    // in 方法 判断这个索引在不在数组里面  返回值是true false
+    console.log(box.id);
+    var obj={a:1};
+    //console.log(obj["b"]==undefined)
+    for(var key in obj){
+
+    }
+    console.log("a" in obj);
+    console.log("c" in obj);
+    var ary=[1,4,3,2];
+    console.log(0 in ary)//true
+    console.log(4 in ary)//false
+    obj["aa"]=1;
+    obj.sss=111;
+    box.id="box";
+    box["id"]="box";
+    box.index=1;
+    console.log(box.index);
+    //DOM元素 添加 获取 删除属性
+    //setAttribute（属性名，属性值） 给元素增加新的属性,增加的属性会在HTML结构标签上显示,一般在设置内置属性的时候用他，在万恶的IE678下不设置class这个属性
+    //通过对象.属性名和对象["属性名"]这俩种方式 只有内置属性才会在标签上显示，自定义属性不会在标签显示
+    box.setAttribute("i","ii");
+    //getAttribute()只能获取在HTML结构标签上的属性,通常setAttribute设置，跟getAttribute 获取结合着用
+    console.log(box.getAttribute("i"))
+    //removeAttribute()只能删除在html结构上的标签的属性
+    box.removeAttribute("index");
+    ///box.index=null假删除
+    delete box.index;//真删除
+    console.log(box.index);
+
+</script>
+</body>
+</html>

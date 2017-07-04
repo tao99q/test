@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body, div, ul, li, input, a {
+            margin: 0;
+            padding: 0;
+            font-family: "microsoft yahei";
+            color: #000;
+        }
+
+        body {
+            background: lightblue;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #searchBox {
+            width: 640px;
+            margin: 30px auto;
+        }
+
+        #searchBox .logo {
+            width: 200px;
+            height: 80px;
+            margin: 0 auto;
+            background: url("img/logo.png") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #searchBox .inputBox {
+            width: 640px;
+            height: 40px;
+            position: relative;
+        }
+
+        #searchBox input {
+            width: 490px;
+            height: 40px;
+            float: left;
+            border: none;
+            padding: 0 40px 0 10px;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+        #searchBox .rightBtn {
+            width: 100px;
+            height: 40px;
+            float: right;
+            background: #ccc;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        #searchBox .camera {
+            display: inline-block;
+            position: absolute;
+            right: 110px;
+            width: 20px;
+            height: 20px;
+            top: 10px;
+            cursor: pointer;
+            background: url("img/camera.png") no-repeat;
+        }
+
+        #searchBox .camera:hover {
+            background-position: 0 -20px;
+        }
+
+        #searchBox .searchList {
+            display: none;
+            position: relative;
+            top: -1px;
+            width: 540px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+
+        #searchBox .searchList li {
+            height: 30px;
+            line-height: 30px;
+        }
+
+        #searchBox .searchList li a {
+            display: block;
+            padding: 0 40px 0 10px;
+        }
+
+        #searchBox .searchList li a:hover {
+            background: #ccc;
+        }
+
+        #searchBox .searchList li.select {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="searchBox">
+    <div class="logo"></div>
+
+    <div class="inputBox">
+        <input type="text" id="search">
+        <span class="camera"></span>
+        <a class="rightBtn" href="javascript: void 0">百度一下</a>
+    </div>
+    <ul class="searchList">
+
+    </ul>
+
+</div>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    //https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=a&json=1
+    //oninput 输入框正在输入时触发
+    $(function () {
+        $("#search").on("input", function (e) {
+            //e.data 所有jquery对象都有data属性，这个属性用来存储数据
+            //data是个对象 比如$(this).data("wd",1);
+            //1.将已输入的值保存一份
+            var val = $(this).val();
+            if (val) {
+                $(this).data("wd", val);
+                $.ajax({
+                    url: "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+                    type: "get",
+                    data: {
+                        wd: val,
+                        json: 1
+                    },
+                    dataType: "jsonp",//跨域
+                    jsonp: "cb",//callback  执行函数名
+                    success: function (result) {
+//                        console.log(result.g);
+                        var html = findData(result.g);
+                        $(".searchList").html(html);
+                        $(".searchList").show();
+
+                    },
+                    error: function (msg) {
+                        console.log(msg);
+                    }
+                });
+            } else {
+                $(".searchList").hide();
+            }
+
+
+        })
+        function findData(data) {
+            var str = ``;
+            $.each(data, function (index, item) {
+                str += `<li><a href="javascript:;">${item.q}</a></li>`;
+            })
+            return str;
+        }
+
+        var code = -1;
+        $("#search").on("keydown", function (e) {
+            if (e.keyCode == 38) {//上箭头
+                code--;
+                if (code <= -2) {
+                    code = $(".searchList li:last").index();
+                    $(".searchList li:last").addClass("select").siblings().removeClass("select");
+                } else if (code == -1) {
+                    $(this).val($("#search").data("wd"));
+                    $(".searchList li").removeClass("select");
+                    return;
+                } else {
+                    $(".searchList li").eq(code).addClass("select").siblings().removeClass("select");
+
+                }
+                $("#search").val($(".searchList li").eq(code).text());
+            } else if (e.keyCode == 40) {
+                code++;
+                if (code > $(".searchList li:last").index()) {
+                    code = 0;
+                }
+                $(".searchList li").eq(code).addClass("select").siblings().removeClass("select");
+                $("#search").val($(".searchList li").eq(code).text());
+            }else if(e.keyCode == 13){
+                //跳转baidu搜索页面
+                var url = "https://www.baidu.com/s?rsv_idx=1&wd="+$(this).val()
+                window.location.href = url;
+            }
+        });
+
+
+        $(".searchList").on("click","li",function (e) {
+            console.dir(e.target.nodeName);
+            $("#search").val($(this).text());
+            $(".searchList").hide();
+            var url = "https://www.baidu.com/s?rsv_idx=1&wd="+$(this).text();
+            window.location.href = url;
+        });
+        $("#search").on("focus",function (e) {
+            if($(this).val){
+                $(".searchList").show();
+                $(".searchList li").removeClass("select");
+            }
+
+        });
+        $(document).on("click",function (e) {
+            console.log(e.currentTarget);
+        })
+        $(".rightBtn").on("click",function (e) {
+            var url = "https://www.baidu.com/s?rsv_idx=1&wd="+ $("#search").val();
+            window.location.href = url;
+        });
+
+    });
+
+</script>
+</body>
+</html>

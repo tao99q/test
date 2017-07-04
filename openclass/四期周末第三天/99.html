@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>99</title>
+    <style>
+        span{
+            padding: 0 10px;
+        }
+        .bg1{
+            background: red;
+        }
+        .bg2{
+            background: yellow;
+        }.bg3{
+             background: pink;
+         }
+    </style>
+</head>
+<body>
+<!--<p>
+    <span>1*1=1</span>
+</p>
+<p>
+    <span>1*2=2</span><span>2*2=4</span>
+</p>
+<p>
+    <span>1*3=3</span><span>2*3=6</span><span>3*3=9</span>
+</p>-->
+<!--
+一共需要9个p元素
+第一个p元素中一个span
+第二个p元素中两个span
+第九个p元素中九个span
+每一个span中第一个值是当前的列数 第二个值是当前的行数
+-->
+<script>
+    // 第一步创建一个装字符串的盒子
+    var str="";
+    for (var i=1;i<=9;i++){// 用来向str中拼接九次p元素
+        str+="<p class='bg"+(i%2+1)+"'>";
+        str+="<p><"
+        // 第一次拼接p元素的时候，需要向p中放置一对span元素
+        // 第二次拼接p元素的时候，需要向p中放置两对span元素
+        for (var j=1;j<=i;j++){
+            // str+="<span>1*1=1</span>";
+            str+="<span>" +j+ "*" +i+ "=" +(j*i)+ "</span>";
+        }
+        str+="</p>";
+    }
+    document.write(str);
+    var op=document.querySelectorAll('p');
+    for (var i=0;i<op.length;i++){
+        op[i].onmouseover=function () {
+            this.bg=this.className;
+            this.className="bg3";
+        };
+        op[i].onmouseout=function () {
+            this.className=this.bg;
+        };
+        op[i].index=i+1;
+        op[i].onclick=function () {
+            alert(this.index);
+        }
+    }
+</script>
+<!--<script>
+    var str="";// 声明一个变量存储一个空字符串，之后向这个字符串中拼接我们想要的p和span
+    for (var i=1;i<=9;i++){
+        str+="<p>";
+        for (var j=1;j<=i;j++){
+            str+="<span>" +j+ "*" +i+ "=" +(j*i)+ "</span>";
+        }
+        str+="</p>";
+    }
+    /*document.write(str);// 将str中的内容添加到html页面中
+    console.log(str);
+    alert(str);*/
+    document.body.innerHTML=str;
+    /*for (var i=1;i<=9;i++){
+        document.write('<p>'+i+'</p>');
+    }*/
+    // document.write('<p></p>');
+</script>-->
+</body>
+</html>

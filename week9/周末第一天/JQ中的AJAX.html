@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $.ajax({
+        url: "note.txt",
+        type: "get",
+        async: true,
+        dataType: "json",
+        cache: true,
+        timeout: null,//xhr.timeout
+        data: null,//如果是get请求，需要把参数拼接到url上
+        hearder: null,
+        success: function (data) {
+
+        }
+        ,
+        error: function (e) {
+
+        }
+
+    })
+    ;
+</script>
+</html>

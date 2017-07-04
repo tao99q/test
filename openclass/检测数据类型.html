@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>检测数据类型</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    function isType(value, type) {
+        var reg = new RegExp("^\\[object " + type + "\\]$", "i");
+        return reg.test(Object.prototype.toString.call(value));
+    }
+    var ary = [];
+
+    var flag = isType(ary, "array");
+    console.log(flag);//->true说名是数组,false说明不是数组 ->true
+    flag = isType(1, "string");
+    console.log(flag);//->false
+
+
+    ~function () {
+        var utils = {}, numObj = {
+            isNum: "Number",
+            isStr: "String",
+            isBoo: "Boolean",
+            isNul: "Null",
+            isUnd: "Undefined",
+            isObj: "Object",
+            isAry: "Array",
+            isFun: "Function",
+            isReg: "RegExp",
+            isDate: "Date"
+        };
+        var isType = function () {
+            var outerArg = arguments[0];
+            return function () {
+                var innerArg = arguments[0], reg = new RegExp("^\\[object " + outerArg + "\\]$", "i");
+                return reg.test(Object.prototype.toString.call(innerArg));
+            }
+        };
+        for (var key in numObj) {
+            if (numObj.hasOwnProperty(key)) {
+                utils[key] = isType(numObj[key]);
+            }
+        }
+        window.$type = utils;
+    }();
+    //console.log($type);
+
+    var ary = [];
+    console.log($type.isAry(ary));//->true
+    console.log($type.isFun(ary));//->false
+</script>
+</html>

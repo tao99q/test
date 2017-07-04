@@ -1,0 +1,12 @@
+1.获取指定页数的数据内容
+url:/getUserList
+type:"GET"
+参数:?page=1
+返回
+{
+code:0,
+msg:"success",
+total:9，//总页数
+data:[ {"id":1,"name","","sex","","score",19}]//数据list 一页10条
+}
+>=(page-1)*10 <page*10-1;

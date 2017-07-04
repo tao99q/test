@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.函数的基础知识</title>
+</head>
+<body>
+<script>
+    /*function fn(){
+        console.log('2009-2017，珠峰8岁了');
+    }
+    fn();
+    fn();
+    fn();
+    fn();*/
+    /*function total() {
+        console.log(a+b);
+    }
+    total();*/
+    /*function total(a,b) {
+        // a = 5 b = undefined
+        console.log(a+b);
+    }
+    total(1,2);
+    total(5,6);
+    total(5,"6");//"56"
+    total(5);// 5 undefined "5undefined" 报错 NaN*/
+
+
+    // 定义一个方法，传入两个值求和，如果传入的值不是数字数据类型，就转为数字类型继续相加，如果转不来数字数据类型，就在控制台输出"我没办法"
+    /*function total(a,b) {
+        // a=1 b="2"  // a=1  b={}
+        a=Number(a);// 将传入的a转为数字 1
+        b=Number(b);// 将传入的b转为数字 NaN
+        // Number的返回值要么是数字，要么是NaN，如果是数字就相加，如果不是数字就返回一句话
+        /!*if (isNaN(a)===false&&isNaN(b)===false){// 判断a和b都是数字的时候
+            console.log(a+b);
+        }else {
+            console.log("我没办法")
+        }*!/
+        // a= 1  b=NaN
+        if (!isNaN(a)&&!isNaN(b)){// 判断a和b都是数字的时候
+            console.log(a+b);
+        }else {
+            console.log("我没办法");
+        }
+    }
+    total(1,"2");
+    total(1,{});*/
+
+
+    // 写一个方法，传入的值我们判断一下，如果可以转为数字，我们就求和，如果不能转为数字，我们就不求和
+   /* function total(a,b) {
+        // a = 1   b = "2"
+        // isNaN()用来判断一个值不是数字
+        // 是数字返回 false  不是数字返回true
+
+        if (isNaN(a)&&isNaN(b)){
+            console.log('我没办法');
+        }else {
+            console.log(Number(a)+Number(b));
+        }
+    }
+    total({},{});
+    total(1,"2");*/
+
+    /*function total(a,b) {// 定义一个函数，并且定义了两个形参a和b用来接收实参
+        a=Number(a),b=Number(b);// 将传入的实参强制转为数字数据类型
+        if (isNaN(a) || isNaN(b)){// 如果a和b有一个不是数字，条件为真
+            console.log('没办法');// 输出这一行
+        }else {// 判断条件不成立，也就是说a和b是数字
+            console.log(a+b);// 就执行这行代码，将a和b的和输出到控制台
+        }
+    }
+    total(1,"2");
+    total(1,{});*/
+
+    /*function total(a,b) {// 定义一个函数，并且定义了两个形参用来接收实参
+        a=Number(a),b=Number(b);
+        // 将a和b强制转为数字数据类型
+        if (isNaN(a)===false&&isNaN(b)===false){
+            // 判断a和b是不是一个有效数字，如果===false说明是数字
+            console.log(a+b);// 如果是数字就输出这一行
+        }else {// 如果不是数字 就输出这一行
+            console.log('没办法');
+        }
+    }
+    total(1,[]);*/
+    function total(a,b) {
+        if (isNaN(a+b)===false){
+            console.log(Number(a)+Number(b));
+        }
+    }
+    total([],1);
+</script>
+</body>
+</html>

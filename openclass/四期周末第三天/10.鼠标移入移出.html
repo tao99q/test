@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.鼠标移入移出</title>
+    <style>
+        li{
+            cursor: pointer;
+        }
+        .bg1{
+            background: red;
+        }
+        .bg2{
+            background: green;
+        }
+        .bg3{
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>11111111111</li>
+    <li>2222222222222</li>
+    <li>33333333333</li>
+    <li>44444444444</li>
+</ul>
+<script>
+    var list=document.querySelectorAll('li');
+    for (var i=0;i<list.length;i++){
+        list[i].className='bg'+(i%2+1);
+        list[i].onmouseover=function () {
+            this.zfpx=this.className;
+            this.className='bg3';
+        };
+        list[i].onmouseout=function () {
+            this.className=this.zfpx;
+        }
+    }
+
+
+
+
+    for (var i=0;i<list.length;i++){
+        list[i].className='bg'+(i%2+1);
+        // 鼠标移入li的时候，li的类名变为bg3
+        list[i].onmouseover=function () {
+            // console.log(this.className);
+            this.zfpx=this.className;
+            // 在移入的时候，将原本的类名存到这个对象的自定义属性中，然后在将这个对象的类名变为bg3
+            this.className='bg3';
+        };
+        // 鼠标移出li的时候，li的类名变回原本的bg1或bg2
+        list[i].onmouseout=function () {
+            this.className=this.zfpx;
+            // 鼠标移出的时候，将当前操作的对象的类名变为之前存到自定义属性中的那个类名
+        }
+    }
+</script>
+</body>
+</html>

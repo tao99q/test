@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 420px;
+            height: 420px;
+            margin: 10px;
+            box-shadow: 0 0 10px #333;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            border-radius: 5px;
+        }
+
+        #l {
+            background: url("img/1.jpg") no-repeat center;
+        }
+
+        #m {
+            background: yellow;
+            opacity: 0.5;
+            filter: alpha(opacity:50);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            border-radius: 5px;
+        }
+
+        #r {
+            display: none;
+        }
+
+        #r img {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="l">
+    <p id="m"></p>
+</div>
+<div id="r">
+    <img src="img/2.jpg" alt="">
+</div>
+<script src="js/public.js"></script>
+<script>
+    var L = document.getElementById("l");
+    var M = document.getElementById("m");//遮罩
+    var R = document.getElementById("r");//显示图片的区域
+    var RImg = R.getElementsByTagName("img")[0];
+    //计算左边遮罩宽高  利用 R宽/Rimg宽 = M宽/L宽
+    var W = public.css(R, "width") / RImg.width * L.offsetWidth;
+    var H = public.css(L, "height") / RImg.height * L.offsetHeight;
+    L.onmouseenter = function () {
+        public.css(M, {display: "block", width: W, height: H});
+        public.css(R, {display: "block"});
+        L.onmousemove = function (e) {
+            e = e || window.event;
+            //计算遮罩位置，默认鼠标在遮罩的中心点 e.clientX - L.offsetLeft 鼠标距离L左边的距离
+            var l = e.clientX - L.offsetLeft - M.offsetWidth / 2;
+            var t = e.clientY - L.offsetTop - M.offsetHeight / 2;
+            //计算遮罩可移到的最大范围，
+            var maxL = L.offsetWidth - M.offsetWidth;
+            var maxT = L.offsetHeight - M.offsetHeight;
+            l = l < 0 ? 0 : (l > maxL ? maxL : l);
+            t = t < 0 ? 0 : (t > maxT ? maxT : t);
+        }
+    }
+</script>
+</body>
+</html>

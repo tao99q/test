@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    <style>
+        #box1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box" style=""></div>
+<!--
+获取DOM元素
+1.通过ID名获取，获取的是一个元素，一般浏览器中一个页面相同的ID只有一个，所以获取出来是一个元素，但是以后可能或遇到有相同的情况，这样获取出来的是第一个，这就要求我们起名的时候相同的ID只能一个
+注意：通过ID获取元素，上下文只能是document
+[上下文].getElementById("元素的ID")
+在IE下，name作用和ID一样，所以name跟ID不能一样，而且只有input的name是有效的其他的识别不出来
+2.通过name获取一组元素（类数组，有length，索引）
+[上下文].getElementsByName("name名字")
+注意：通过name获取元素，上下文只能是document
+3.通过Class获取一组元素（类数组，有length，索引）
+[上下文].getElementsByClassName("class名字")
+注意：[上下文]自己定义，一般都是他的父亲，最多不会超过三级
+4.通过标签名获取一组元素，（类数组，有length，索引）
+[上下文].getElementsByTagName("标签名")
+注意：[上下文]自己定义，一般都是他的父亲，最多不会超过三级
+
+
+//innerHTML:再给元素添加或者修改的时候，可以识别标签，获取的时候所有的内容包括标签都会获取出来
+//innerText：再给元素添加或者修改的时候，不可以识别标签，获取的时候只获取文本
+
+
+获取元素的样式
+元素（对象）有个内置属性叫style,style属性也是一个对象他有很多的样式属性
+元素.style.color;
+注意：style只能获取行内样式（不常用），添加样式也是加在行内（常用）
+
+getComputedStyle(元素).样式属性，获取所有的样式（只能获取不能修改）
+万恶的IE678不兼容他有自己的方法：currentStyle
+
+增加修改class
+元素.className="class1 class2 .."
+-->
+<div class="box1" id="box1" style="width: 200px;height: 100px">111</div>
+<ul class="ul1">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<ul class="ul1">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+</body>
+</html>
+<script type="text/javascript">
+    ary=[1,2];ary[0]
+    var box1=document.getElementById("box");
+    var oUl1=document.getElementsByClassName("ul1")[0];
+    var oUl2=document.getElementsByClassName("ul1")[1];
+    var oLis=oUl1.getElementsByTagName("li");
+    var oLis2=oUl2.getElementsByTagName("li")[3];
+    console.log(oUl1,oLis);
+    var ulText=oUl1.innerHTML;
+    var ulText=oUl1.innerText;
+    console.log(ulText);
+    var  a=1;a=a+1;//a+=1
+    var str="点点";
+    oLis2.innerHTML+="<a href='https://www.baidu.com/'>"+ str+ "</a>";
+    var obj={
+        style:{
+            color:"red",
+            width:"100px"
+        },
+        class:"box",
+        id:"box",
+        fn:function () {
+            console.log(1)
+        }
+    }
+    obj.style.color;
+    obj.fn()
+
+    var box1=document.getElementById("box1");
+
+    console.log(box1.style.color);
+    box1.style.color="yellowgreen";
+
+    var s=getComputedStyle(box1);
+    console.log(s)
+
+    box1.className+=" box2 box3"//"box1 box2 box3"
+</script>

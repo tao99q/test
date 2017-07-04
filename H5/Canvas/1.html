@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;">
+    您的浏览器不支持 HTML5 canvas 标签。
+</canvas>
+<canvas id="myCanvas1" width="400" height="400" style="border:1px solid #000000;">
+    您的浏览器不支持 HTML5 canvas 标签。
+</canvas>
+</body>
+<script>
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+
+    ctx.shadowBlur=40;
+    ctx.shadowColor="black";
+    ctx.fillStyle="red";
+    ctx.fillRect(20,20,100,80);
+
+
+
+    var c1=document.getElementById("myCanvas1");
+    var ctx1=c1.getContext("2d");
+
+
+    var grd=ctx1.createRadialGradient(75,50,5,90,60,100);
+    grd.addColorStop(0,"red");
+    grd.addColorStop(1,"white");
+    ctx1.fillStyle=grd;
+    ctx1.fillRect(10,10,150,100);
+</script>
+</html>

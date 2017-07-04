@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿苹果电脑任务栏菜单</title>
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        #menu {
+            position: absolute;
+            width: 90%;
+            bottom: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<ul id="menu"></ul>
+<script type="text/javascript">
+    var oMenu = document.getElementById("menu");
+    var aImg = oMenu.getElementsByTagName("img");
+    var aWidth = [];
+    for (i = 1; i < 9; i++) {
+        var img = document.createElement("img");
+        img.src = "img/" + i + ".png";
+        oMenu.appendChild(img);
+    }
+    var i = 0;
+    //保存原宽度, 并设置当前宽度
+    for (i = 0, len = aImg.length; i < len; i++) {
+        aWidth.push(aImg[i].offsetWidth);
+        aImg[i].width = parseInt(aImg[i].offsetWidth / 2);
+    }
+    oMenu.onmousemove = function (e) {
+        for (i = 0, len = aImg.length; i < len; i++) {
+            //鼠标到图片中心点的距离
+            var a = e.clientX - aImg[i].offsetLeft - aImg[i].offsetWidth / 2;
+            var b = e.clientY - aImg[i].offsetTop - oMenu.offsetTop - aImg[i].offsetHeight / 2;
+            //1 - Math.sqrt(a * a + b * b) / 100;  100：鼠标到图片中心点的距离
+            var iScale = 1 - Math.sqrt(a * a + b * b) / 100;
+            if (iScale < 0.5) iScale = 0.5;
+            aImg[i].width = aWidth[i] * iScale
+        }
+    }
+</script>
+</body>
+</html>

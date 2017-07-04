@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="draw" width="800" height="600" style="border: 2px dashed #333;"></canvas>
+	</body>
+	<script type="text/javascript">
+		var draw=document.getElementById("draw");
+		var cvs=draw.getContext("2d");
+		//cvs.arc(x,y,r,star,end,n);
+		//x,y 圆心的坐标
+		//r 半径
+		//star：起始角，以弧度计算(三点钟方向是0度)
+		//end ：结束角
+		//n:是否逆时针  true/false  默认值（false	顺时针）
+		function draw1(){
+			cvs.strokeStyle="#FFA500";
+			cvs.beginPath();
+			cvs.arc(150,150,100,0,Math.PI/2,false);
+			cvs.closePath();
+			cvs.stroke();
+		}
+		//draw1();
+		
+		function draw2(){
+			cvs.fillStyle="orangered";
+			cvs.beginPath();
+			cvs.arc(200,200,40,0,2*Math.PI);
+			cvs.closePath();
+			cvs.fill();
+			cvs.strokeStyle="yellow";
+			cvs.lineWidth=40;
+			cvs.beginPath();
+			cvs.arc(200,200,60,0,2*Math.PI);
+			cvs.closePath();
+			cvs.stroke();
+		}
+		//draw2();
+		
+		function draw3(){
+			cvs.strokeStyle="#ff6700";
+			cvs.beginPath();
+			cvs.lineWidth=2;
+			cvs.arc(100,100,100,0,Math.PI/2);
+            cvs.closePath();
+			cvs.stroke();
+            cvs.beginPath();
+			cvs.fillStyle="yellow";
+			cvs.arc(300,300,80,0,Math.PI/2);
+            cvs.closePath();
+			cvs.fill();
+			//每次调用fill的时候，会把当次路径的起始点和结束点分别连接，填充闭合部分
+			//所以说，以后再写每次路径结束的时候，记得关闭当前路径
+		}
+		draw3();
+	</script>
+</html>

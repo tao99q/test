@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>灵活的背景定位</title>
+    <style>
+
+        .div1 {
+            margin: 2rem 2rem;
+            background: url(http://csssecrets.io/images/code-pirate.svg) no-repeat #58a;
+            background-position: right 20px bottom 10px;
+
+            /* Styling */
+            max-width: 10em;
+            min-height: 5em;
+            padding: 10px;
+            color: white;
+            font: 100%/1 sans-serif;
+        }
+        .div2 {
+            margin: 2rem 2rem;
+            background: url(http://csssecrets.io/images/code-pirate.svg) no-repeat #58a bottom right;
+            background-origin: content-box;
+
+            /* Styling */
+            max-width: 10em;
+            min-height: 5em;
+            padding: 10px;
+            color: white;
+            font: 100%/1 sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="div1"></div>
+<div class="div2"></div>
+</body>
+</html>

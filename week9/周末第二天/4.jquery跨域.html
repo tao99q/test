@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script>
+    $.ajax({
+        url:"http://matchweb.sports.qq.com/kbs/hotMatchList?callback=ff",
+        dataType:"jsonp",
+        jsonp:"callback",
+        jsonpCallback:"fn",//设置传给服务器的函数名，不是JQ默认随机生成的那个，而自定义的名字
+        success:function (result) {
+            console.log(result);
+        }
+    });
+</script>
+</html>

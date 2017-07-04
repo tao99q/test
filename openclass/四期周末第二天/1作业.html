@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    var a = 12;
+    var obj = {//obj=xxxfff000
+        a: "12px",
+        12: "a",
+        b: 12//b:"a",
+        //c:13
+    };
+    var newObj = obj;//newObj=xxxfff000
+    a = obj[12];//a="a"
+    console.log(a);
+    //   此时输出___"a"________
+    console.log(obj[a]);
+    //   此时输出_obj["a"]=___12px_______
+    obj['b'] = a;
+    console.log(newObj['b']);
+    //    此时输出___"a"________
+    obj['c'] = 13;
+    console.log(newObj);
+    //   此时输出___________
+
+
+
+    var ary = [1, 2, 3, 4];//
+    function fn(ary) {
+        ary[0] = 0;
+        ary = [0];
+        ary[0] = 100;
+        return ary;
+    }
+    var res = fn(ary);
+    console.log(ary);
+    //      此时输出___________
+    console.log(res);
+    //      此时输出___________
+
+
+    var person1 = {
+        name: "富婆",
+        sex: "女",
+        money: "一百个亿",
+        1: 1//,
+        //age:30
+    };
+    delete person1.sex;
+    console.log(person1.sex);
+    // 此时输出____undefined_______
+    person1.money = null;
+    console.log(person1.money);
+    // 此时输出_____null______
+    var age = 30;
+    person1.age = age;
+    console.log(person1);
+    // 此时输出___________
+
+
+    var a = 5;
+    console.log(++a + a++ + ++a + --a + a-- + a);
+    //  6  + 6  +  8  +  7   +  7   +  6=40
+    //a:6    7     8     7      6      6
+    console.log(isNaN(null));//false
+
+    var obj = {
+        name: "小明"
+    };
+    obj.name;
+    obj["name"];
+    obj[name]
+
+    //if判断，循环：for  for in，函数，DOM获取元素和获取样式，绚丽的九九乘法表，选项卡，
+</script>

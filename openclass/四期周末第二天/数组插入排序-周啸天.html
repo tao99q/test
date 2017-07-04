@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组插入排序</title>
+</head>
+<body>
+<script>
+//插入排序：
+    //把第一张牌放在左手
+    //以后拿到每一张牌的时候，和左手中的牌进行一次比较，一般来说我们的习惯是从后往前比较，如果当前的牌比倒数第一张小，再继续往左比。。。一直到遇到当前的牌已经比手里的某张牌大了，则把这张牌插入到某张牌的后面（某张牌下一张牌的前面）
+    function insertSort(ary) {
+        //newAry存储的就是我左手中已经抓取的牌
+        var newAry=[];
+        newAry.push(ary[0]);//先抓第一张牌
+        //一次把桌面上第二章及以后的牌抓到
+        for (var i=1;i<ary.length;i++){
+            var cur=ary[i];
+            //抓到当前的牌之后，分别的从后往前和左手中的牌进行比较
+            for(var j=newAry.length-1;j>=0;){
+                if(cur<newAry[j]){//当前新抓的牌比左手中的这张牌小,继续和newAry[j]前面的牌比
+                j--;
+                if (j==-1){//说明当前拿的这张牌比左手所有的牌都小，把这张牌放在开头即可
+                    newAry.unshift(cur);
+
+                }
+            }else {//当前新抓的牌比左手中的这张牌大,放在newAry[j]后面，也相当于newAry[j+1]这张牌的前面
+                newAry.splice(j+1,0,cur);
+                j=-1;
+            }
+            }
+
+        }
+        return newAry;
+    }
+    var ary=[6,3,5,7,2,4];
+    var res=insertSort(ary);
+    console.log(res);
+
+
+//    方法2：
+var ary1=[6,3,5,7,2,4];
+    function insertSort1(ary1) {
+        var key;
+        var j;
+        for(var i=1;i<ary1.length;i++){
+            key=ary1[i];
+            j=i-1;
+            while(j>-1&&ary1[j]>key){
+                ary1[j+1]=ary1[j];
+                j--;
+            }
+            ary1[j+1]=key;
+        }
+        return ary1;
+    }
+    console.log(insertSort1(ary1));
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

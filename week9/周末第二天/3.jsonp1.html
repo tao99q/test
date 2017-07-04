@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+    function ff(result) {
+        console.log(result.data.pre);
+    }
+    var script = document.createElement("script");
+    script.src = "http://matchweb.sports.qq.com/kbs/hotMatchList?callback=ff";
+    document.body.insertBefore(script, document.body.firstChild);
+</script>
+<!--<script type="text/javascript" src="http://matchweb.sports.qq.com/kbs/hotMatchList?callback=ff"></script>-->
+</html>
+
+腾讯服务器就会接受到请求，去查找参数callback的值，比如：我们这里传的ff,然后进行解析'ff({"name":"aa","age":"22"})',然后把字符串返回给客户端

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="banner" class="banner">
+        <div class="bannerInner">
+        </div>
+        <ul class="focusList">
+        </ul>
+        <a class="left" href="javascript:void 0"></a>
+        <a class="right" href="javascript:void 0"></a>
+    </div>
+</body>
+</html>
+<script src="js/public.js"></script>
+<script src="js/animate.js"></script>
+<script src="js/banner.js"></script>
+
+
+
+<script type="text/javascript">
+    var banner = new Banner("banner","data.txt",2000);
+    banner.init();
+//    banner.autoMove();
+//    banner.focusClick();
+//    banner.btnClick();
+</script>

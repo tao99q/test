@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a {
+            position: relative;
+            display: inline-block;
+            outline: none;
+            text-decoration: none;
+            color: #000;
+            font-size: 32px;
+            padding: 5px 10px;
+        }
+
+        a:hover::before, a:hover::after {
+            position: absolute;
+        }
+
+        a:hover::before {
+            content: "\5B";
+            left: -20px;
+        }
+
+        a:hover::after {
+            content: "\5D";
+            right: -20px;
+        }
+    </style>
+</head>
+<body>
+    <a>YES</a>
+</body>
+</html>

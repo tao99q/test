@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4.点击弹出</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script>
+    var lis=document.querySelectorAll('li');
+    for (var i=0;i<lis.length;i++){
+        // 在函数执行之前，我们将i的0 1 2 存到一个地方
+        // 在js中能当做容器的有变量，第二个是对象的属性
+        // var index=i;// 变量会因为后面再次赋值，而覆盖掉前面的值
+        // xxx.index=i 0 1 2 存三次
+        // 第一个li的index属性中存0
+        // 第二个li的index属性存1
+        // 第三个li的index属性存2
+        /*lis[0].index=0;
+        lis[1].index=1;
+        lis[2].index=2;*/
+        lis[i].index=i;
+//        console.log(lis[i].index);
+        lis[i].onclick=function () {
+            alert(this.index);// 第一个lis[0]
+        //this 当前 这个
+        };
+    }
+    // i是全局下的变量，for循环完成后i=3 但是i=3的是，函数没有执行，但函数执行的时候，i早已变成的3
+
+
+
+
+
+
+    /*lis[0].onclick=function () {
+        alert(0)
+    };
+    lis[1].onclick=function () {
+        alert(1)
+    }
+    lis[2].onclick=function () {
+        alert(2)
+    }*/
+
+</script>
+</body>
+</html>

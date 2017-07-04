@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9.隔行变色</title>
+    <style>
+        /*li:nth-of-type(Odd){
+            background: #2b7dd1;
+        }
+        li:nth-of-type(even){
+            background: #59b07d;
+        }*/
+        .bg1{
+            background: red;
+        }
+        .bg2{
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>我是第1项</li>
+    <li>我是第2项</li>
+    <li>我是第3项</li>
+    <li>我是第4项</li>
+    <li>我是第5项</li>
+    <li>我是第6项</li>
+</ul>
+<script>
+    var list=document.querySelectorAll('li');
+    for (var i=0;i<list.length;i++){
+        /*if (i%2===0){// 奇数行
+            list[i].className="bg1";
+        }else {
+            list[i].className="bg2";
+        }*/
+        /*(i%2===0)?list[i].className='bg1':list[i].className='bg2';*/
+        list[i].className='bg'+(i%2+1);
+        /*list[0].className='bg'+(0%2+1)='bg1';
+        list[1].className='bg'+(1%2+1)='bg2';
+        list[2].className='bg'+(2%2+1)='bg1';*/
+        /*list[i].className="bg1";
+        list[i].className="bg2";*/
+    }
+    /*list[0].className="bg1";
+    list[1].className="bg2";
+    list[2].className="bg1";
+    list[3].className="bg2";
+    list[4].className="bg1";
+    list[5].className="bg2";*/
+</script>
+</body>
+</html>

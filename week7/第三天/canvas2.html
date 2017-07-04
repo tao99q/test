@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="draw" width="800" height="600" style="border: 3px dashed #ccc;"></canvas>
+	</body>
+	<script type="text/javascript">
+		var draw=document.getElementById("draw");
+		var cvs=draw.getContext("2d");
+		//cvs.fillRect(x,y,w,h);填充的矩形
+		//x,y 这个矩形左上角的坐标
+		//w,h 这个矩形的宽，高
+		
+		//cvs.strokeRect(x,y,w,h)
+		//x,y 这个矩形左上角的坐标
+		//w,h 这个矩形的宽，高
+		//注意：边框一半在里面，一半在外面
+		function draw1(){
+			//填充
+			cvs.fillStyle="#FCCDDA";
+
+			//边框
+			cvs.strokeStyle="red";
+			cvs.lineWidth=5;
+            cvs.fillRect(10,15,100,50);
+			cvs.strokeRect(150,15,100,50);
+		}
+		//draw1()
+		function draw2(){
+			cvs.fillStyle="orange";
+			cvs.fillRect(20,100,300,100);
+			//清除某部分，清除的还是个矩形
+			//cvs.clearRect(x,y,w,h)
+			cvs.clearRect(20,100,40,40);
+			cvs.clearRect(280,100,40,40);
+			cvs.clearRect(120,140,100,60);
+		}
+		draw1();
+	</script>
+</html>

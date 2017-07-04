@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body,div,ul,li{
+            margin: 0;
+            padding: 0;
+            -webkit-user-select: none;
+        }
+        html,body{
+            width: 100%;
+            background-color: #ddd;
+        }
+        div{
+            width:90% ;
+            margin: 0 auto;
+            margin-left: 100px;
+            color: #fff;
+            font-size: 50px;
+            text-align: center;
+        }
+        ul.floor{
+            width: 80px;
+            font-size: 20px;
+            border: 1px dashed rosybrown;
+            position: fixed;
+            left: 10px;
+            top: 50%;
+            margin-top: -180px;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .floor li{
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #fff;
+        }
+        .floor li:hover{
+            background-color: #ff4538;
+            color: #fff;
+        }
+        .floor li.select{
+            background-color: #ff4538;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div>美妆</div>
+<div>服饰</div>
+<div>家电</div>
+<div>运动</div>
+<div>吃货</div>
+<div>母婴</div>
+<div>图书</div>
+<div>汽车</div>
+<div>旅游</div>
+<ul class="floor">
+    <li id="0">美妆</li>
+    <li id="1">服饰</li>
+    <li id="2">家电</li>
+    <li id="3">运动</li>
+    <li id="4">吃货</li>
+    <li id="5">母婴</li>
+    <li id="6">图书</li>
+    <li id="7">汽车</li>
+    <li id="8">旅游</li>
+    <li id="9">顶部</li>
+</ul>
+</body>
+<script src="js/floor.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,2 @@
+Async(异步) Javascript And XML
+异步：客户端和服务器的数据交互，不需要整个页面刷新

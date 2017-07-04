@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="draw" width="800" height="600" style="border: 2px dashed green;"></canvas>
+	</body>
+</html>
+<script type="text/javascript">
+	var draw=document.getElementById("draw");
+	var cvs=draw.getContext("2d");
+	//绘图
+	//cvs.drawImage(Image,x,y,w,h)
+	//Image:就是可以放在DOM中的真实图片，可以动态创建，也可以获取页面上的
+	//x,y   图片左上角的坐标
+	//w,h   绘制图片的宽高
+	
+	//cvs.drawImage(Image,sx,sy,sw,sh,dx,dy,dw,dh);
+	//sx,sy   图片左上角的坐标
+	//sw,sh   矩形区域的宽高，用来截取图片
+	//dx,dy   截取出来放在canvas上的坐标
+	//dw,dh   画在canvas上的宽高
+	//sx,sy,sw,sh 是截取图片的过程
+	//dx,dy,dw,dh 把截取出的图片放在canvas上的过程
+	
+	
+	function draw1(){
+		var img=new Image();
+		img.src="img/default.gif";
+		img.onload=function(){
+			cvs.drawImage(this,0,100,100,75)
+		}
+	}
+//	draw1();
+	function draw2(){
+		var img=new Image();
+		img.src="img/1.jpg";
+		img.onload=function(){
+			cvs.drawImage(this,480,150,440,410,0,0,200,200);
+			cvs.drawImage(this,70,80,400,400,200,0,200,200);
+			cvs.drawImage(this,480,150,440,410,400,0,200,200);
+			cvs.drawImage(this,70,80,400,400,600,0,200,200);
+		}
+	}
+	draw2();
+	
+	//设置平铺
+	//cvs.createPattern(Image,type)
+	//Image:就是可以放在DOM中的真实图片，可以动态创建，也可以获取页面上的
+	//type:no-repeat不平铺，repeat全方向平铺，
+	//repeat-x:x轴方向平铺
+	//repeat-y:y轴方向平铺
+	
+	function draw3(){
+		var img=new Image;
+		img.src="img/default.gif";
+		img.onload=function(){
+			var rep=cvs.createPattern(this,"repeat");
+			cvs.fillStyle=rep;
+			cvs.fillRect(0,0,draw.width,draw.height)
+		}
+	}
+//	draw3();
+</script>

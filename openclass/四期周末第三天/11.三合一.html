@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11.三合一</title>
+    <style>
+        .bg1{
+            background: yellow;
+        }
+        .bg2{
+            background: green;
+        }
+        .bg3{
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>0000001</li>
+    <li>0000002</li>
+    <li>0000003</li>
+    <li>0000004</li>
+    <li>0000005</li>
+</ul>
+<script>
+    var list=document.querySelectorAll('li');
+    for (var i=0;i<list.length;i++){
+        list[i].className='bg'+(i%2+1);
+        list[i].onmouseover=function () {
+          this.zfpx=this.className;
+            this.className='bg3';
+        };
+        list[i].onmouseout=function () {
+          this.className=this.zfpx;
+        };
+        list[i].index=i+1;
+        list[i].onclick=function () {
+            alert(this.index);
+        }
+    }
+</script>
+</body>
+</html>

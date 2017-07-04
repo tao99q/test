@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //eval()将字符串变成真正的代码,遇到大括号想表示对象的话，就用小括号包起来，要不浏览器就会不认识，把他当做一个代码块
+    document.write('哈哈哈');
+    var s="document.write('哈哈哈');";
+    var ss="a";
+    a=1;
+    document.write(s);
+    console.log(eval("a"));
+    console.log(a);
+
+    //{name:"白百何",age:12}
+    var str="({name:'白百何',age:12})";
+    console.log(eval(str));
+
+    //{name:'白百何'}
+    //name='白百何'
+    //console.log(name)
+
+
+
+
+
+
+    //
+    //if(条件){
+        //如果条件成立，执行语句
+   // }else{如果条件不成立，执行语句}
+
+    if([]){
+        console.log(true)
+    }else {
+        console.log(false)
+    }
+
+    //三元运算符
+    //条件？成立执行：否则执行
+    var a=2;
+    if(a===1){
+        //a++;
+        console.log(a);
+
+    }else if(a===2){
+        console.log(a)
+    }else {
+        console.log(a);
+    }
+    a===1?console.log(a):(a===2?console.log(a):console.log(a));
+</script>
+</body>
+</html>

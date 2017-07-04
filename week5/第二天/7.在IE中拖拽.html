@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            cursor: move;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+</body>
+<script>
+    var box = document.getElementById("box");
+    box.onmousedown = function (e) {
+        e = e || window.event;
+        this.L = e.clientX - this.offsetLeft;
+        this.T = e.clientY - this.offsetTop;
+
+        //setCapture() 在IE中相当于让鼠标和元素存在一个捆绑关系,直接给box绑定onmousemove
+        this.setCapture();
+        this.onmousemove = function (e) {
+            e = e || window.event;
+            var l = e.clientX - this.L;
+            var t = e.clientY - this.T;
+            this.style.left = l + "px";
+            this.style.top = t + "px";
+            e.preventDefault ? e.preventDefault() : returnValue = false;
+        }
+        this.onmouseup = function (e) {
+            this.releaseCapture();
+            this.onmousemove = null;
+            this.onmouseup = null;
+        }
+
+    }
+</script>
+</html>

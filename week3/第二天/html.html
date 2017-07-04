@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    11111
+</div>
+</body>
+<script type="text/javascript">
+    var box = document.getElementById("box");
+    //    console.log(box.style.width);
+    //    console.log(window.getComputedStyle(box, null));
+    //    console.log(window.getComputedStyle(box).width);
+    //    console.log(window.getComputedStyle(box).color);
+    //    console.log(box.currentStyle.width);
+    function getCss(curEle, attr) {
+        var val = null;
+        if ("getComputedStyle" in window) {
+            val = window.getComputedStyle(curEle)[attr];
+        } else {
+
+            if (attr === "opactiy" || attr === "filter") {
+                val = curEle.currentStyle["filter"];
+                var reg = /^alpha\(opactiy=(\d+(?:\.\d+)?)\)$/;
+                val = reg.test(val) ? RegExp.$1 / 100 : 1;
+            } else {
+                val = curEle.currentStyle[attr];
+            }
+        }
+        var reg = /^-?\d+(\.\d+)?(px|pt|pp|rem|deg)?$/;
+        return reg.test(val) ? parseFloat(val) : val;
+    }
+    console.log(getCss(box, "color"));
+
+
+
+</script>
+</html>

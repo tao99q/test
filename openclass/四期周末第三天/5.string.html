@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>string</title>
+</head>
+<body>
+<script TYPE="text/javascript">
+    var str="1112222";//字面量创建方式
+    console.dir(str);
+    var s=new String("abcdefg");//构造函数创建方式
+    console.log(s)
+    //1.split()，将字符串按照指定字符拆分为数组，返回值是拆分后的数组
+    //注意：拆分后得到数组，每一项还是字符串
+    var str ="123456789";
+    var ary=str.split("");
+    console.log(ary,str);
+    var ss="1,2,3,4,5,6";//"["+"1,2,3,4,5,6"+"]"
+    console.log(eval("["+ss+"]"));
+    //2.replace(n,m)替换:将n替换成m,每一次只能替换一个，有返回值替换后的字符串，原字符串不变
+    var s="aaabbbccc";
+    var ss=s.replace("a","A");
+    console.log(ss);
+    var s="aaabbbccc";
+    while (s.indexOf("a")!==-1){
+        //s字符串里面还有“a”才会继续循环
+        //将替换后的返回值付给他自己就可以
+        s=s.replace("a","A");
+    }
+    console.log(s)
+
+    //substr(n,m)从索引n开始取出m个字符
+    //substring(n,m)从索引n到索引m-1
+
+    var s1="zhufengpeixun";
+    console.log(s1.substr(1,3));//"huf"
+    console.log(s1.substring(1,3));//"hu"
+    //s1.charAt(0)-->str1[0]
+    console.log(s1.charAt(0))
+    console.log(s1.charCodeAt(0));//UICODE编码表中的ASCII码值
+
+    //indexOf(字符，索引),lastIndexOf(字符，索引)，第一个参数必填，第二个选填的,第二个参数是在原字符串开始查找的索引，不写的时候就是默认0
+    var str="aaasssddccaass";
+    console.log(str.indexOf("a",13));
+    var n=0;
+    for(var i=0;i<str.length;i++){
+        if(str[i]=="a"){
+           n++;
+        }
+    }
+    console.log(n);
+    var i=0;
+    var n=0;
+    while (str.indexOf("a",i)!==-1){
+        if(str[i]=="a"){
+            n++
+        }
+        i++;
+    }
+    console.log(n);
+    var str="1111222211";//去重
+    for (var i=0;i<str.length;i++){
+        while (str.indexOf(str[i])!==str.lastIndexOf(str[i])){
+            str=str.replace(str[str.lastIndexOf(str[i])],"")
+        }
+    }
+    console.log(str);
+    //i=0 str[0]=1
+
+    //str.toUpperCase()转大写
+    //str.toLowerCase()转小写
+    var str1="aa";
+    var str2="abb";
+    var n=str1.localeCompare(str2);//比较str1在前面返回值是-1
+    var m=str2.localeCompare(str1);//比较
+    console.log(n,m);
+
+</script>
+</body>
+</html>

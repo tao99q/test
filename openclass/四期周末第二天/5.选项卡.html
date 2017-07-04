@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body,div,ul,li{
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei";
+            -webkit-user-select: none;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #box{
+            width: 500px;
+            margin: 100px auto;
+        }
+        #box ul{
+            position: relative;
+            overflow: hidden;
+        }
+        #box ul li{
+            float: left;
+            margin-right: 15px;
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border: 1px solid gainsboro;
+            border-bottom: none;
+            cursor: pointer;
+        }
+        #box div{
+            display: none;
+            width: 500px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: blue;
+            border: 1px solid gainsboro;
+        }
+        #box ul li.select{
+            background-color: yellowgreen;
+        }
+        #box div.select{
+            display: block;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+    <ul>
+        <li class="select">HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+    </ul>
+    <div class="select">超文本标记语言</div>
+    <div>层叠样式表</div>
+    <div>轻量级解释型脚本编程语言</div>
+</div>
+<!--
+需求：1.默认第一个li和对应的div有选中的样式，其他的没有。class=“select”
+2.点击每一个的li，对应的div有选中的样式（换句话说加上Class=“select”），其他的class=“”
+3.我们可以这么想：先把所有的class=“”，然后再把选中的加上class=“select”
+-->
+</body>
+</html>
+<script type="text/javascript">
+    var oBox=document.getElementById("box");
+    var oLis=oBox.getElementsByTagName("li");
+    var oDivs=oBox.getElementsByTagName("div");
+
+    //点击第n个的li，先把所有的class=“”，然后再把第n个div的加上class=“select”
+    function change(n) {
+        //1.让所有的li，div没有“select”
+        for(var i=0;i<oDivs.length;i++){
+            oDivs[i].className="";
+            oLis[i].className="";
+        }
+        //n表示的是当前选中的那个
+        oDivs[n].className="select";
+        oLis[n].className="select";
+    }
+//    oLis[0].onclick=function () {
+//        change(0)
+//    };
+//    oLis[1].onclick=function () {
+//        change(1)
+//    };
+//    oLis[2].onclick=function () {
+//        change(2)
+//    }
+
+    for (var i=0;i<oLis.length;i++){
+        oLis[i].i=i;
+        oLis[i].onclick=function () {
+            change(this.i)
+        }
+    }
+    //绑定点击事件的时候是把function这个方法当做字符串赋值给他
+    //当你手动去点击的时候才会把字符串里的函数拿出来执行
+    //oLis[0].onclick=“function(){change(i)}”;i=1
+    //oLis[1].onclick=“function(){change(i)}”;i=2
+    //oLis[2].onclick=“function(){change(i)}”;i=3
+    var a=11;
+//    obj1={a:1}
+//    obj2={a:2}
+//    obj3={a:3}
+    console.dir(oLis[0])
+</script>

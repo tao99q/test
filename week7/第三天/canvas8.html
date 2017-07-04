@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="draw" width="8000" height="600" style="border: 2px dashed red;"></canvas>
+		
+<!--
+图形组合
+cvs.globalCompositeOperation=type;
+type的值：
+	1.source-over：默认值 在原来的图形上绘制新图(覆盖的意思)
+	2.destination-over:在原来的图形下面绘制新图
+	3.source-in:显示交集，颜色就是新图的颜色
+	4.source-out:显示的新图非交集部分
+	5.destination-in：显示交集，颜色就是旧图的颜色	
+	6.destination-out:显示的旧图非交集部分
+	7.source-atop:显示旧图和交集部分，	交集是新图的颜色
+	8.destination-atop:显示新图和交集部分，交集是旧图的颜色
+	9.lighter:全部显示，交集是二者颜色叠加
+	10.xor:显示全部非交集部分
+	11.copy：只显示新图
+-->
+	</body>
+	<script type="text/javascript">
+		var draw = document.getElementById("draw");
+		var cvs = draw.getContext("2d");
+		function draw1(){		
+			cvs.fillStyle="gold";
+			cvs.fillRect(10,10,100,100);
+//			cvs.globalCompositeOperation="destination-over";
+			cvs.globalCompositeOperation="source-in";
+			//cvs.globalCompositeOperation="source-out";
+			//cvs.globalCompositeOperation="destination-in";
+			//cvs.globalCompositeOperation="destination-out";
+			//cvs.globalCompositeOperation="source-atop";
+			//cvs.globalCompositeOperation="destination-atop";
+			//cvs.globalCompositeOperation="lighter";
+			//cvs.globalCompositeOperation="xor";
+			cvs.globalCompositeOperation="copy";
+			cvs.fillStyle="#0000FF";
+			cvs.fillRect(50,50,100,100);
+		}
+		draw1();
+	</script>
+</html>

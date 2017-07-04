@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            border: 20px solid red;
+            margin: 30px;
+            padding: 20px;
+        }
+        .box1{
+            margin-top: 1000px;
+            width: 300px;
+            height: 300px;
+
+        }
+        .box2{
+            border-color: blue;
+            width: 100px;
+            height: 100px;
+        }
+        .box3{
+            border-color: green;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="box1" style="position: relative">
+    <div class="box2">
+        <div class="box3"></div>
+    </div>
+</div>
+</body>
+<!--
+为了页面操作性更强，一般都是以body为参照物，所以最好求当前元素距离body的偏移量
+注意：offsetLeft和offsetTop值：是从当前元素的外边框到父级参照物的内边框（也就是说不包括边框）
+-->
+<script>
+    var box1 = document.getElementsByClassName("box1")[0];
+    var box2 = document.getElementsByClassName("box2")[0];
+    var box3 = document.getElementsByClassName("box3")[0];
+//    console.log(box2.offsetParent);
+//    console.log(box3.offsetParent);
+//    //box2真实内容高度
+//
+//    console.log(document.body.offsetParent);
+    //求当前元素距body的偏移量
+    function offset(curEle) {
+        //先求一次当前元素的偏移量和父级参照物
+
+        var l = curEle.offsetLeft;
+        var t = curEle.offsetTop;
+        var p = curEle.offsetParent;
+        while (p){
+            //在IE8浏览器中，偏移量包含了父级参照物的边框
+            if(window.navigator.userAgent.indexOf("MSIE 8") === -1){
+                l+= p.clientLeft;//加上父级参照物的左边框
+                t+= p.clientTop;//加上父级参照物的上边框
+            }
+            l+= p.offsetLeft;//加上当前元素距离父级参照物的左偏移量
+            t+= p.offsetTop;//加上当前元素距离父级参照物的上偏移量
+            p = p.offsetParent;
+        }
+
+
+        return {
+            left:l,
+            top:t
+        }
+
+    }
+    document.body.onscroll = function () {
+        console.log(this.scrollTop);
+    }
+    console.log(box1.offsetHeight,box1.offsetTop);
+    document.body.scrollTop =  document.body.clientHeight;
+
+
+</script>
+</html>

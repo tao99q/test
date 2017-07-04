@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 80px;
+            height: 80px;
+            top: 0px;
+            left: 0px;
+            background-color: yellowgreen;
+            position: absolute;
+            cursor: move;
+        }
+
+        #box:hover {
+            background-color: red;
+
+        }
+    </style>
+</head>
+<body id="body">
+<div id="box"></div>
+</body>
+<!--<script src="js/public.js"></script>-->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    //    var box = document.getElementById("box");
+    ////    var body = document.getElementById("body");
+    //    box.onmousedown = function (e) {
+    //        //获取鼠标距离方块左边距离
+    //        var L = e.clientX - this.offsetLeft;
+    //        //获取鼠标距离方块上边距离
+    //        var T = e.clientY - this.offsetTop;
+    //        document.onmousemove = function (e) {
+    //            //方块在移动鼠标后left
+    //            var l = e.pageX - L;
+    //            //方块在移动鼠标后Top
+    //            var t = e.pageY - T;
+    //            public.css(box,{left:l,top:t});
+    //            e.preventDefault();
+    //        }
+    //        document.onmouseup = function () {
+    //            this.onmousemove = null;
+    //            this.onmousedown = null;
+    //        }
+    //    }
+    var $box = $("#box");
+    var $body = $("#body");
+    $box.on("mousedown", function (e) {
+        var L = e.clientX - $(this).offset().left;
+        var T = e.clientY - $(this).offset().top;
+        $body.on("mousemove", function (e) {
+            $box.css({left: e.pageX - L, top: e.pageY - T});
+        });
+        $body.on("mouseup",function () {
+            $body.off("mousemove");
+            $body.off("mousedown");
+        })
+    });
+</script>
+</html>

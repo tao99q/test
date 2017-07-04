@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box" class=" box1 box2 box3 ">
+
+</div>
+</body>
+<script src="js/public.js"></script>
+<script type="text/javascript">
+    var box = document.getElementById("box");
+    var ary = box.className.split(" ");
+    //        function hasClass(ele,classStr) {
+    //            var ary = ele.className.split(" ");
+    //            for (var i=0;i<ary.length;i++){
+    //                if (classStr == ary[i]){
+    //                    return true;
+    //                }
+    //            }
+    //            return false;
+    //        }
+    function hasClass(curEle, classStr) {
+        return new RegExp("(^| +)" + classStr + "( +|$)").test(curEle.className);
+    }
+    box.className += " box4";
+//    console.log(public.hasClass(box, "box4"));
+
+    function addClass(curEle, classStr) {
+        //1.先对classStr处理,先去掉首尾空格，再按一到多个空格拆分
+        classStr = classStr.replace(/^ +| +$/, "");
+        var reg = / +/g;
+        classStr = classStr.split(reg);
+        for (var i = 0; i < classStr.length; i++) {
+            if (hasClass(curEle, classStr[i])) {
+                curEle.className += " " + classStr[i];
+            }
+        }
+    }
+    function removeClass(curEle, classStr) {
+
+        classStr = classStr.replace(/^ +| +$/, "").split(/ +/g);
+        for (var i = 0; i < classStr.length; i++) {
+            var reg = new RegExp("(^| +)" + classStr[i] + "( +|$)");
+            hasClass(curEle, classStr[i]) ? curEle.className = curEle.className.replace(reg, " ") : null;
+        }
+        curEle.className = curEle.className.replace(/^ +| +$/,"");
+    }
+
+    removeClass(box," box3 box4");
+    console.log(box.className);
+</script>
+
+</html>

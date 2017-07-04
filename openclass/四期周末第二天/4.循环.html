@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="box">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script type="text/javascript">
+    //for in 遍历对象 对象有几组键值对就循环几次
+    //遍历的时候：属性名是数字的话，先遍历数字从小到大，剩下的就是书写的顺序
+    var obj = {
+        name: "李文鑫",
+        sex: "男",
+        2: 12,
+        age: 42,
+        1: "哈哈"
+    };
+    console.log("1", 2, 3, 4);
+    obj["name"]
+    for (var key in obj) {
+        //key:属性名
+        console.log(typeof key, obj[key])
+    }
+    var a = [1, 2, 3];
+    for (var key in a) {
+        //key:索引
+        console.log(key, a[key])//0,a[0]   1,a[1]   2,a[2]
+    }
+    var a = [1, 2, 3];
+    for (var key in a) {
+        a[key]++
+    }
+    console.log(a);
+
+    var o = ["aa", "bb", "cc"];
+    var oUl = document.getElementById("box");
+    var oLis = oUl.getElementsByTagName("li");
+    for (var key in o) {
+        oLis[key].innerHTML = o[key];
+        //为了保险起见全都用【】
+    }
+
+    // for (变量 in 对象){} 变量就是代表对象的属性名
+    // 作业1：a=[{a:1},{a:1},{a:1}]  --> [{a:2},{a:2},{a:2}]
+    // a[key].a++
+
+
+    //for循环四步：
+    //1.设置循环开始的值  var i=0;
+    //2.判断循环是否继续  i<=10 看看i是否满足
+    //3.第二部成立的时候执行循环体
+    //4.一般都是循环次数的累加
+
+    //for(条件1;条件2;条件3){循环体} 条件1,2必须有  条件3可以没有但是前面分号必须加上 for（条件1;条件2;）
+    for (var i = 0; i < 10;) {
+        console.log(i++);
+    }
+    //break:终止循环
+    //continue:结束本次循环，进入下次循环
+
+    for (var i = 2; i <= 5; i++) {
+        if (i < 4) {
+            i += 2;//i=4
+            continue//i++,i=5
+        } else {
+            i += 3;//i=3+5=8
+        }
+        i += 3;//8+3
+        i += 3;//11+3
+        //i++
+    }
+    console.log(i);
+
+
+    for (var i = 0; i < 10; i++) {
+        if (i++ > 5) {//第一次：i++的值是0，i=1
+            //第二次：i++值5 i=6 ；条件都不成立执行else，遇到break结束
+            i += 2;
+            continue
+        } else if (i < 5) {
+            i += 3;//第一次：i=4 遇到continue结束本次，执行i++, i=5
+            continue
+        } else {
+            break//结束本次
+        }
+    }
+    console.log(i);
+
+    var aa = ["a", "b", "c"];//aa[0]
+    for (var index in aa) {
+        console.log(index, aa[index])
+    }
+
+
+</script>
+</body>
+
+</html>

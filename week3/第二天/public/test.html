@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box" class="div1 div2 div3 div5 " style="height: 50px;width: 50px;border: 1px solid red"></div>
+</body>
+<script src="public2.js"></script>
+<script type="text/javascript">
+    var box = document.getElementById("box");
+    console.log(public.hasClass(box,"div4"));
+    public.addClass(box,"div4 div6");
+    public.toggleClass(box,"div7 div6 div5");
+    public.css(box,"width","100px");
+    var obj = {
+        height:200,
+        width:200
+    }
+    console.log(public.css(box, "width"));
+    public.css(box,obj);
+</script>
+</html>
