@@ -1,0 +1,15 @@
+{
+  "name": "ll",
+  "version": "ll -a",
+  "description": "npm init",
+  "main": "index.js",
+  "scripts": {
+   "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --config webpack.dev.config.js --progress --display-modules --colors --display-reasons"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^3.0.0"
+  },
+  "dependencies": {}
+}
