@@ -1,15 +1,19 @@
 {
-  "name": "ll",
-  "version": "ll -a",
-  "description": "npm init",
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-   "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --config webpack.dev.config.js --progress --display-modules --colors --display-reasons"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack"
   },
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "webpack": "^3.0.0"
-  },
-  "dependencies": {}
+    "json-loader": "^0.5.4",
+    "vue-loader": "^13.0.0",
+    "vue-template-compiler": "^2.3.4",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  }
 }
