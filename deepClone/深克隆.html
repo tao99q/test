@@ -8,7 +8,8 @@
 <script>
     //深度克隆
     function deepClone(obj) {
-        var result = {}, oClass = isClass(obj);
+        var result = {},
+            oClass = isClass(obj);
         for (key in obj) {
             var copy = obj[key];
             if (isClass(copy) == "Object") {

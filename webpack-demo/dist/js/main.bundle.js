@@ -506,24 +506,20 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__css_common_css__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__css_common_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__css_common_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_layer_layer_js__ = __webpack_require__(7);
 
 
-__webpack_require__(3);
 
-var _layer = __webpack_require__(7);
-
-var _layer2 = _interopRequireDefault(_layer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var App = function App() {
+const App = function () {
     // var dom = document.getElementById('#app');
     var dom = document.getElementById("app");
-    var layer = new _layer2.default();
-
+    var layer = new __WEBPACK_IMPORTED_MODULE_1__components_layer_layer_js__["a" /* default */]();
     dom.innerHTML = layer.tpl;
 };
 
@@ -550,8 +546,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js?importLoaders=1!../../node_modules/postcss-loader/lib/index.js!./common.css", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js?importLoaders=1!../../node_modules/postcss-loader/lib/index.js!./common.css");
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./common.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./common.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -583,7 +579,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, ".flex-div {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n", ""]);
+exports.push([module.i, ".flex-div {\n  display: flex;\n}\n", ""]);
 
 // exports
 
@@ -685,31 +681,23 @@ module.exports = function (css) {
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layer_less__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layer_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__layer_less__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layer_html__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layer_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__layer_html__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-__webpack_require__(8);
-
-var _layer = __webpack_require__(10);
-
-var _layer2 = _interopRequireDefault(_layer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function layer() {
   return {
     name: 'layer',
-    tpl: _layer2.default
+    tpl: __WEBPACK_IMPORTED_MODULE_1__layer_html___default.a
   };
 }
 
-exports.default = layer;
+/* harmony default export */ __webpack_exports__["a"] = (layer);
 
 /***/ }),
 /* 8 */
@@ -732,8 +720,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/postcss-loader/lib/index.js!../../../node_modules/less-loader/dist/index.js!./layer.less", function() {
-			var newContent = require("!!../../../node_modules/postcss-loader/lib/index.js!../../../node_modules/less-loader/dist/index.js!./layer.less");
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/less-loader/dist/index.js!./layer.less", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/less-loader/dist/index.js!./layer.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -744,12 +732,26 @@ if(false) {
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = ".flex {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.layer {\n  width: 600px;\n  height: 200px;\n  background-color: green;\n}\n.layer > div {\n  width: 400px;\n  height: 100px;\n  background-color: red;\n}\n"
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".flex {\n  display: flex;\n}\n.layer {\n  width: 600px;\n  height: 200px;\n  background-color: green;\n}\n.layer div {\n  width: 400px;\n  height: 100px;\n  background: url(" + __webpack_require__(10) + ");\n}\n", ""]);
+
+// exports
+
 
 /***/ }),
 /* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "11991ce21d76c3d530b277db2e13539e.jpg";
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"layer\">\n  <div>this is a layer</div>\n</div>\n";

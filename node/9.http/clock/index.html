@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="clock"></div>
+</body>
+<script type="text/javascript">
+
+    let clock = document.getElementById("clock");
+
+    let ajax = ({url = "", type = "GET", dataType = "text", async = true, data = {}}) => {
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest();
+            xhr.open(type, url, async);
+            xhr.responseType = dataType;
+            xhr.onload = () => resolve(xhr.response);
+            xhr.onerror = (err) => reject(err);
+            xhr.send(JSON.stringify(data));
+        });
+    };
+
+    ajax({
+        url: "/clock",
+        type: "GET",
+        dataType: "json",
+        async: true
+    }).then((data) => clock.innerHTML = data.date, (err) => console.log(err));
+</script>
+</html>

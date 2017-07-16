@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <div class="rom">
+        <div class="col-md-6 col-md-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">登陆</div>
+                <div class="panel-body">
+                    <form action="/user/signin" method="post" >
+                        <div class="form-group ">
+                            <label for="username" class="control-label col-md-2">用户名</label>
+                            <input type="text" name="username" id="username" class="from-control" required>
+                        </div>
+                        <div class="form-group ">
+                            <label for="password" class="control-label col-md-2">密码</label>
+                            <input type="password" name="password" id="password" class="from-control ">
+                        </div>
+                        <div class="form-group ">
+                            <button type="submit" class="btn btn-primary">登陆</button>
+                            <a href="/user/signup" class="btn btn-info col-md-offset-2">注册</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

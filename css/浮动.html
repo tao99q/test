@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动</title>
+    <style type="text/css">
+        ul{
+            background-color: red;
+            float: left;
+        }
+        /*li{*/
+             /*!*display: inline-block;*!*/
+             /*float: left;*/
+             /*height: 100px;*/
+             /*width: 100px;*/
+             /*background-color: yellow;*/
+         /*}*/
+        /*li{*/
+            /*!*display: inline-block;*!*/
+            /*float: right;*/
+            /*height: 100px;*/
+            /*width: 100px;*/
+            /*background-color: yellow;*/
+        /*}*/
+        li{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            float: inherit;
+        }
+        span{
+            float: left;
+            width: 100px;
+            height: 50px;
+            background-color: green;
+        }
+        /*
+        float:left 从左到右依次浮动一行
+        如果将自然布局看作是基本的文档流，那么浮动元素脱离了这个层次，来到了一个文档流之上的平面，所有的浮动元素在这个新的平面上继续进行排布
+         float:right 从右到左依次浮动一行
+         float:none 将元素的浮动属性去掉，回到文档流
+         float:inherit 继承低级元素的浮动属性  ie7以下不支持
+            1.浮动元素的兄弟元素，如果是在文档流内，是无法识别浮动元素的，那么这个元素就会跑浮动元素的后进行文档流内的正常排布
+            2.文字、图片、表单围绕浮动元素进行排布
+         浮动元素在不设置宽度和高度的情况下，它的宽度和高度是由本身内容决定的
+         所有元素都可以设置成浮动元素，不分块级和行内元素，但是在标签嵌套时，还是遵循块级可以包其它的，但是行内不能包块级
+        */
+
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <!--<li style="float: none;">4</li>-->
+</ul>
+<div style="background-color: blue;height: 300px;">
+    <span>span</span>
+    <span>span</span>
+    <span>span</span>
+</div>
+</body>
+</html>
