@@ -6,7 +6,8 @@ let express = require('express'),
     app = express();
 app.use(cookieParser());
 app.get('/visit', (req, res) => {
-    let count = req.cookies.visit ? parseInt(req.cookies.visit) + 1 : 1;
+    let visit = req.cookies.visit;
+    let count = visit ? parseInt(visit) + 1 : 1;
     res.cookie('visit', count);
     res.send(`第${count}次访问`);
 });

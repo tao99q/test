@@ -9,7 +9,7 @@ app.get('/write', (req, res) => {
     res.cookie('name', 'aaa', {
         // domain:'127.0.0.1',
         // path: '/read',
-        // expires: new Date(Date.now() + 10 * 1000),
+        // expires: new Date(Date.now() + 20 * 1000),
         maxAge: 10 * 1000
     });
     res.send('ok');
