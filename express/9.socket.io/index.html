@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天室</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+
+    <style>
+        .author {
+            cursor: pointer;
+            color: red;
+        }
+
+        .delete {
+            display: none;
+        }
+
+        li:hover .delete {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="text-center">
+                        聊天室
+                        <button onclick="join('red')" class="btn btn-danger btn-sm" id="red">
+                            回忆
+                        </button>
+                        <button onclick="join('green')" class="btn btn-success btn-sm" id="green">
+                            记忆
+                        </button>
+                    </h4>
+                </div>
+                <div class="panel-body jumbotron">
+                    <ul onclick="chat(event)">
+
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <form class="form-horizontal" onsubmit="send(event)">
+                        <div class="form-group">
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="textMsg" required>
+                            </div>
+                            <button class="btn btn-primary" type="submit">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    let msgUl = document.querySelector(".panel-body ul");
+    let textMsg = document.querySelector("#textMsg");
+
+
+    let user;
+    let socket = io();
+    let username = 'user' + Math.round(Math.random() * 100 + 10);
+    socket.on('connect', () => {
+        socket.send(username);
+        socket.emit('getAllMessage');
+    });
+    socket.on('message', (msgObj) => {
+        let li = document.createElement("li");
+
+
+        li.innerHTML = formatUser(msgObj);
+        li.id = 'li' + msgObj._id;
+
+        li.className = "list-group-item";
+        msgUl.appendChild(li);
+    });
+    socket.on('allMessage', (messages) => {
+//        messages.reverse();
+
+        msgUl.innerHTML = messages.map((msgObj) => (
+            `<li class="list-group-item" id="li${msgObj._id}">${formatUser(msgObj)}</li>`
+        )).join(' ');
+    });
+
+    function formatUser(msgObj) {
+        return `<span class="author">${msgObj.author}</span>:${msgObj.content}<button class="btn btn-danger btn-sm delete" data-id="${msgObj._id}" >删除</button><span class="pull-right">${msgObj.createAt}</span>`;
+    }
+
+    let send = (event) => {
+        event.preventDefault();
+        let msg = textMsg.value;
+
+        socket.send(msg);
+        textMsg.value = "";
+    };
+
+    let chat = (event) => {
+        if (event.target.className == "author") {
+            let author = event.target.innerText;
+            textMsg.value = `@${author} `
+        } else if (/(^| )delete( |$)/.test(event.target.className)) {
+            socket.emit('delete', event.target.dataset.id);
+        }
+
+    };
+
+    let join = (roomName) => {
+
+        socket.emit('join', roomName);
+    };
+    socket.on('joined', (roomName) => {
+        let room = document.querySelector("#" + roomName);
+        room.className = room.className.replace('btn-sm', '');
+    });
+    socket.on('deleted', (id) => {
+        let li = document.querySelector("#li" + id);
+
+        li.parentNode.removeChild(li);
+    });
+</script>
+</html>
