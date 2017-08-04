@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #Ff6709;
+            border: 3px solid #000000;
+        }
+        /*.box1{*/
+            /*position: relative;*/
+            /*top: 50px;*/
+            /*left: 50px;*/
+        /*}*/
+        /*.box2{*/
+
+        /*}*/
+        .box1{
+            position: relative;
+            bottom:50px;
+            right: 50px;
+        }
+    </style>
+</head>
+<body>
+  <!--
+  1、不脱离文档流
+  2、不会影响其它元素
+  3、相对定位的元素会覆盖在文档流内元素的上面
+  4、参照物是本身
+  5、当四个方向值都设置的情况下，只执行top和left
+  6、当元素都有相对定位属性时，后的元素会覆盖在前面的元素上面
+-->
+<div class="box1">1</div>
+<div class="box2">2</div>
+</body>
+</html>

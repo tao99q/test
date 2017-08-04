@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*div {
+
+            width: 200px;
+            height: 200px;
+            border: 3px solid black;
+            background-color: red;
+        }
+
+        .box2 {
+            position: absolute;
+            right: 0;
+            bottom:0;
+        }*/
+      .box{
+        position: relative;
+        width: 600px;
+        height: 600px;
+        border: 2px solid red;
+      }
+      .box1{
+        position: relative;
+        left: 0;
+        width: 400px;
+        height: 400px;
+        background-color: yellow;
+      }
+      .box2{
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        left: -100px;
+        background-color: black;
+      }
+    </style>
+</head>
+<body>
+  <!--
+  1、脱离文档流
+  2、定位的元素将文档流内的元素覆盖
+  3、绝对定位元素默认参照物是它第一次读取的可视窗口的位置，如果这个页面加宽，加高，也不会改变定位元素的位置
+  4、绝对定位的参照物是可以人为设置的
+      （1）参照物需要是定位元素的父级元素；
+      （2）这个父级元素需要有position这个属性(相对定位、绝对定位、固定定位)
+  5、当有多个父级元素都有定位属性时，绝对定位元素找的参照物是最近的那个父级元素
+
+  注：脱离文档流的元素只影响下面的元素，不影响上面的元素
+  -->
+<!-- <div class="box1">1</div>
+<div class="box2">2</div>
+<div class="box3">3</div>
+<p style="height:1000px;"></p> -->
+
+<div class="box">
+  <div class="box1">
+    <div class="box2">
+      <div class="box3">
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
