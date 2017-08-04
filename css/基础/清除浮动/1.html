@@ -2,9 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        body, ul,p,ol {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul ,ol{
+            list-style: none;
+            background-color: green;
+        }
+        .clear:after{
+            display: block;
+            content: "";
+            clear: both;
+        }
+
+        li {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            border: 1px solid red;
+        }
+
+        div {
+            height: 300px;
+            background-color: cornflowerblue;
+        }
+    </style>
 </head>
 <body>
-$END$
+<ul class="clear">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<ol class="clear">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ol>
+<div></div>
 </body>
 </html>
