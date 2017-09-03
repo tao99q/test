@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 50px;
+            background: #FFFFFF;
+        }
+
+        .close {
+            font-size: 0;
+            display: block;
+        }
+
+        .close::before, .close::after {
+            content: "";
+            width: 50px;
+            height: 2px;
+            background: #FFFFFF;
+            display: block;
+        }
+        .close::before{
+            -webkit-transform:rotate(45deg);
+
+            transform: rotate(45deg);
+
+        }
+        .close::after{
+            -webkit-transform: translateY(-1px) rotate(-45deg);
+
+            transform: translateY(-1px) rotate(-45deg);
+        }
+        a{
+            text-decoration: none;
+            font-size: 0;
+            background: #333;
+            text-indent: 1.2em;
+            width: 40px;
+            height: 40px;
+            display: block;
+            line-height: 1;
+            position: relative;
+            border-radius: 2px;
+
+        }
+        a::after{
+            content: "";
+            width: 22px;
+            left: 9px;
+            top: 0;
+            position: absolute;
+            box-shadow: 0 10px 0 2px #FFF,0 20px 0 2px #FFF,0 30px 0 2px #FFF;
+        }
+        a:hover{
+            background: #2ecc71;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--<span class="close">Close</span>-->
+<a href="" class="menu">Menu</a>
+</body>
+</html>

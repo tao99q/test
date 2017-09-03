@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="850" height="400"></canvas>
+</body>
+<script type="text/javascript">
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#2c3e50';
+  ctx.fillRect(0, 0, 850, 400);
+  const img = new Image();
+  img.src = './flag.png';
+  img.onload = function () {
+    ctx.restore();
+    ctx.drawImage(img,80,150);
+  };
+  ctx.save();
+  ctx.rotate(5*Math.PI*2/180);
+
+  ctx.fillStyle = '#fff';
+  ctx.font = '48px georgia';
+  ctx.fillText('This is a Canvas',230,200);
+  ctx.font = '21px georgia';
+  ctx.fillText('Happiness is a way station between too much and too little',230,250);
+
+
+
+</script>
+</html>

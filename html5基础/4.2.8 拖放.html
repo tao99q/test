@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            position: relative;
+        }
+        #logo{
+            width: 300px;
+            height: 200px;
+            background: url("./img/logo-mask.png") center 50% no-repeat;
+            position: absolute;
+            left:0;
+        }
+        #box{
+            width: 300px;
+            height: 200px;
+            background: #d4efdf;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            border: 5px dashed #27AE60;
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="logo"></div>
+<div id="box"></div>
+</body>
+<script>
+    var logo = document.getElementById('logo');
+    logo.draggable = true;
+    var box = document.getElementById('box');
+    box.ondragover = function (e) {
+      e.preventDefault();
+    }
+    box.ondrop = function (e) {
+      box.appendChild(logo);
+    }
+</script>
+</html>

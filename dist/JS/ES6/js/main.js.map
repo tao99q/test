@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../JS/ES6/js/main.js"],"names":["getName","console","log"],"mappings":";;AAAA;;AACA,SAASA,OAAT,GAAmB;AACfC,YAAQC,GAAR,CAAY,qBAAY,GAAZ,oBAAZ;AACH;;AAEDF","file":"main.js","sourcesContent":["import {firstName, lastName, year} from './profile';\nfunction getName() {\n    console.log(firstName + ' ' + lastName);\n}\n\ngetName();"]}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section id="article">
+    <h1>Latest Articles</h1>
+    <span id="tip">unread</span>
+    <article>
+        <a href="">
+            <time>2017/9/2 19:56:00</time>
+            <h2>Phasellus faucibus erat sit amet eros gravida posuere.</h2>
+        </a>
+    </article>
+    <article>
+        <a href="">
+            <time>2017/9/2 19:16:00</time>
+            <h2>Maecenas faucibus erat sit amet eros gravida posuere.</h2>
+        </a>
+    </article>
+</section>
+<script src="jquery-2.1.4.min.js"></script>
+<script>
+  $(document).ready(function () {
+    if (supports_html5_storage()) {
+      refreshUnread();
+    }
+  });
+
+  function refreshUnread() {
+    var lastTime = localStorage.getItem('lastTime');
+    if (lastTime === null) {
+      lastTime = '1900/1/1 00:00:00';
+    }
+    var dateLast = new Date(lastTime);
+    var first = true;
+    var numUnread = 0;
+    $('#article >article').each(function (index) {
+      var dateNew = new Date($(this).find("time").text());
+      if (dateNew > dateLast) {
+        numUnread++;
+        $(this).addClass('unread');
+        if (first) {
+          localStorage.setItem('lastTime', $(this).find('time').text());
+          first = false;
+        }
+      }
+    });
+    if (numUnread > 0) {
+      $('#tip').html(numUnread + ' unread');
+    } else {
+      $('#tip').hide();
+    }
+  }
+
+  function supports_html5_storage() {
+    try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+      return false;
+    }
+  }
+</script>
+</body>
+</html>

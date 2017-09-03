@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Example</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #7F8C8D;
+            margin: 50px;
+            font-family: "Helvetica Neue", sans-serif;
+            color: rgba(255, 255, 255, .8);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin: 30px auto;
+        }
+
+        #slideshow {
+            width: 980px;
+            height: 450px;
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #slideshow ul, #slideshow ul li {
+            list-style: none;
+            position: absolute;
+        }
+
+        #slideshow-nav {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #slideshow-nav span {
+            display: inline-block;
+            margin: 0 7px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            font-size: 0;
+            background: rgba(255, 255, 255, .3);
+            -webkit-transition: all .5s;
+            transition: all .5s;
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        #slideshow-nav span.active {
+            background: rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+
+<body>
+<h1>Slideshow component</h1>
+<div id="slideshow">
+    <ul>
+        <li><img src="p1.jpg"></li>
+        <li><img src="p2.jpg"></li>
+        <li><img src="p3.jpg"></li>
+        <li><img src="p4.jpg"></li>
+    </ul>
+    <div id="slideshow-nav"></div>
+</div>
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var duration = 3000;
+    var speed = 1000;
+    var width = $('#slideshow').width();
+    var curIndex = 0;
+    var totalIndex = $('#slideshow > ul > li').length;
+    var timer;
+    $('#slideshow > ul > li').each(function (index) {
+      $(this).css('left', index * width + 'px');
+      $('#slideshow-nav').append(`<span>${index + 1}</span>`);
+    })
+    $('#slideshow-nav > span').eq(0).addClass('active');
+    var firstChild = $('#slideshow > ul > li').eq(0).clone();
+    $('#slideshow > ul').append(firstChild);
+    firstChild.css('left', totalIndex * width + 'px');
+
+    function move() {
+      curIndex++;
+      if (curIndex > totalIndex) {
+        curIndex = 1;
+        $('#slideshow > ul').css('left', '0px');
+      }
+      for (var i = 0; i < totalIndex; i++) {
+        $('#slideshow-nav > span').eq(i).removeClass('active');
+      }
+      if (curIndex === totalIndex) {
+        $('#slideshow-nav > span').eq(0).addClass('active');
+      } else {
+        $('#slideshow-nav > span').eq(curIndex).addClass('active');
+      }
+      $('#slideshow >ul').animate({left: width * curIndex * -1 + 'px'}, speed);
+      timer = setTimeout(move, duration + speed);
+
+    }
+    move();
+  });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @font-face {
+            font-family: 'icon-font';
+            src: url('font/flat-ui-icons-regular.ttf'), url('font/flat-ui-icons-regular.eot'), url('font/flat-ui-icons-regular.woff'), url('font/flat-ui-icons-regular.svg');
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-size: 26px;
+            font-family: sans-serif;
+        }
+
+        #wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #side-nav {
+            position: absolute;
+            width: 300px;
+            height: 100%;
+            background: #444;
+            top: 0;
+            -webkit-transform: translateX(-300px);
+            transform: translateX(-300px);
+            -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+
+        #main {
+            width: 100%;
+            padding: 50px;
+            box-sizing: border-box;
+            -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+
+        #side-nav.off-display {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+
+        #main.off-display {
+            -webkit-transform: translateX(300px);
+            transform: translateX(300px);
+        }
+
+        #off-canvas-menu {
+            text-decoration: none;
+            color: #999;
+            text-indent: 1.2em;
+            font-size: 32px;
+            display: block;
+            line-height: 1;
+            position: relative;
+
+        }
+
+        #off-canvas-menu::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: -4px;
+            width: .75em;
+            box-shadow: 0 10px 0 2px #999, 0 20px 0 2px #999, 0 30px 0 2px #999;
+        }
+
+        #content {
+            background: #E74C3C;
+            padding: 80px 50px;
+            margin-top: 40px;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 81px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: rgba(255, 255, 255, .7);
+            text-align: center;
+        }
+
+        ul {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .2);
+        }
+
+        li {
+            border-top: 1px solid rgba(255, 255, 255, .2);
+            line-height: 60px;
+            height: 60px;
+            padding-left: 40px;
+            list-style-type: none;
+            color: #aaa;
+        }
+
+        li::before {
+            font-family: 'icon-font';
+            font-size: .85em;
+            margin-right: 20px;
+        }
+
+        li:nth-child(1)::before {
+            content: "\e62e";
+        }
+
+        li:nth-child(2)::before {
+            content: "\e62d";
+        }
+
+        li:nth-child(3)::before {
+            content: "\e640";
+        }
+
+        li:nth-child(4)::before {
+            content: "\e631";
+        }
+
+        #close-slide-nav {
+            text-decoration: none;
+            font-size: 14px;
+            color: #888;
+            display: block;
+            text-align: right;
+            margin: 20px;
+        }
+
+        #close-slide-nav::before {
+            font-family: 'icon-font';
+            content: "\e609";
+            font-size: .85em;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="main">
+        <div id="main-nav">
+            <a href="" id="off-canvas-menu">Menu</a>
+        </div>
+        <div id="content">
+            <h1>Off-canvas menu</h1>
+            <p>Off-canvas menus are positioned outside of the viewport and slide in when activated. Setting up an
+                off-canvas layout in HTML5 is super easy.</p>
+        </div>
+    </div>
+    <div id="side-nav">
+        <a href="" id="close-slide-nav">Close</a>
+        <ul>
+            <li>Home</li>
+            <li>Events</li>
+            <li>Store</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="jquery-2.1.4.min.js" type="text/javascript"></script>
+<script>
+  $(document).ready(function () {
+    $('#off-canvas-menu,#close-slide-nav').click(function (e) {
+      e.preventDefault();
+      $('#side-nav,#main').toggleClass('off-display');
+    })
+  });
+</script>
+</html>

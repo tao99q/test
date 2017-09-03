@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            width: 100%;
+
+        }
+
+        body {
+            background: #06c url("bg2.jpg") no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-family: "Helvetica Neue", sans-serif;
+
+        }
+
+        #title {
+            position: absolute;
+            top: 10%;
+            left: 8%;
+
+        }
+
+        #container {
+            position: absolute;
+            bottom: 20%;
+            width: 100%;
+            overflow: auto;
+        }
+
+        #title h1 {
+            font-size: 56px;
+            text-transform: uppercase;
+
+        }
+
+        #title ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #title li {
+            display: inline-block;
+        }
+
+        #title li a {
+            color: #fff;
+        }
+
+        #scroll {
+            width: 3200px;
+            height: 300px;
+            background: rgba(0, 0, 0, .2);
+        }
+
+        .article {
+            display: block;
+            height: 200px;
+            width: 800px;
+            box-sizing: border-box;
+            padding-right: 30px;
+            float: left;
+        }
+
+        .article img {
+            margin-right: 20px;
+            float: left;
+        }
+
+        #scroll .article h1 {
+            font-weight: normal;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div id="title">
+    <h1>The Scroll Effect</h1>
+    <ul>
+        <li><a href="#pic1">PIC1</a></li>
+        <li><a href="#pic2">PIC2</a></li>
+        <li><a href="#pic3">PIC3</a></li>
+        <li><a href="#pic4">PIC4</a></li>
+    </ul>
+</div>
+<div id="container">
+    <div id="scroll">
+        <div class="article" id="pic1">
+            <img src="pic1.jpg" alt="">
+            <h1>Duis volutpat</h1>
+            <p>Phasellus hendrerit</p>
+        </div>
+        <div class="article" id="pic2">
+            <img src="pic2.jpg" alt="">
+            <h1>Duis volutpat</h1>
+            <p>Phasellus hendrerit</p>
+        </div>
+        <div class="article" id="pic3">
+            <img src="pic3.jpg" alt="">
+            <h1>Duis volutpat</h1>
+            <p>Phasellus hendrerit</p>
+        </div>
+        <div class="article" id="pic4">
+            <img src="pic4.jpg" alt="">
+            <h1>Duis volutpat</h1>
+            <p>Phasellus hendrerit</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

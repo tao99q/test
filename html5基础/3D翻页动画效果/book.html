@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 120px;
+        }
+
+        .book {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+            -webkit-perspective: 1500px;
+            perspective: 1500px;
+
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform: rotateX(10deg);
+            transform: rotateX(10deg);
+
+        }
+
+        li {
+            position: absolute;
+            list-style: none;
+            font-size: 0;
+            width: 300px;
+            height: 400px;
+            box-shadow: inset 0 0 2px rgba(0, 0, 0, .1);
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transition: transform 1s;
+        }
+
+        .cover {
+            background: url("cover.png");
+            z-index: 0;
+
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -ms-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+        .book:hover .cover{
+            -webkit-transform: rotateY(-180deg);
+            -moz-transform: rotateY(-180deg);
+            -ms-transform: rotateY(-180deg);
+            -o-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+        }
+        .page1 {
+            background: url("page.png");
+            z-index: -1;
+            left: -300px;
+            -webkit-transform-origin: right center;
+            -moz-transform-origin: right center;
+            -ms-transform-origin: right center;
+            -o-transform-origin: right center;
+            transform-origin: right center;
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+        .book:hover .page1{
+            -webkit-transform: rotateY(0deg);
+            -moz-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            -o-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+        }
+        .page2 {
+            background: url("page2.png");
+            z-index: -2;
+        }
+    </style>
+</head>
+
+<body>
+<ul class="book">
+    <li class="cover">第一页</li>
+    <li class="page1">第二页</li>
+    <li class="page2">第三页</li>
+</ul>
+</body>
+</html>

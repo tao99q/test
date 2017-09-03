@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 50px;
+            background: #CCCCCC;
+        }
+
+        @font-face {
+            font-family: 'icon-font';
+            src: url('font/flat-ui-icons-regular.ttf'), url('font/flat-ui-icons-regular.eot'), url('font/flat-ui-icons-regular.woff'), url('font/flat-ui-icons-regular.svg');
+        }
+
+        .close {
+            font-size: 0px;
+            cursor: pointer;
+            display: block;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50px;
+            background: #FFFFFF;
+            color: #8b8ab3;
+            text-align: center;
+        }
+
+        .close::before {
+            content: '\e609';
+            font-family: 'icon-font';
+            speak: none;
+            font-size: 48px;
+            display: block;
+        }
+
+        .close:hover::before {
+            /*-webkit-transform: rotate(360deg);*/
+            /*transform: rotate(360deg);*/
+            /*-webkit-transition: all 1.5s;*/
+            /*transition: all 1.5s;*/
+            -webkit-animation: spin 1s linear infinite alternate;
+            animation: spin 1s linear infinite alternate;
+        }
+
+        .icon {
+            font-size: 0px;
+            cursor: pointer;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50px;
+            background: #FFFFFF;
+            color: #8b8ab3;
+            text-align: center;
+            display: inline-block;
+            margin-right: 20px;
+
+            -webkit-animation: move 1s;
+            animation: move 1s;
+            -webkit-animation-fill-mode: backwards;
+            -moz-animation-fill-mode: backwards;
+            -o-animation-fill-mode: backwards;
+            animation-fill-mode: backwards;
+        }
+
+        @-webkit-keyframes move {
+            from {
+                opacity: 0;
+                -webkit-transform: translateY(100%);
+            }
+            to {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+            }
+        }
+
+        @keyframes move {
+            from {
+                opacity: 0;
+                -webkit-transform: translateY(100%);
+            }
+            to {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+            }
+        }
+
+        .home {
+            -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+        }
+
+        .home::before {
+            font-family: 'icon-font';
+            content: '\e62e';
+            speak: none;
+            font-size: 48px;
+
+        }
+
+        .search {
+            -webkit-animation-delay: .2s;
+            animation-delay: .2s;
+        }
+
+        .search::before {
+            font-family: 'icon-font';
+            content: '\e630';
+            speak: none;
+            font-size: 48px;
+
+        }
+
+        .user {
+
+            -webkit-animation-delay: .3s;
+            animation-delay: .3s;
+
+        }
+
+        .user::before {
+            font-family: 'icon-font';
+            content: "\e631";
+            speak: none;
+            font-size: 48px;
+
+        }
+
+        .mail {
+            -webkit-animation-delay: .4s;
+            animation-delay: .4s;
+        }
+
+        .mail::before {
+            font-family: 'icon-font';
+            content: "\e632";
+            speak: none;
+            font-size: 48px;
+
+        }
+
+        .chat {
+            -webkit-animation-delay: .5s;
+            animation-delay: .5s;
+        }
+
+        .chat::before {
+            font-family: 'icon-font';
+            content: "\e62d";
+            speak: none;
+            font-size: 48px;
+
+        }
+
+        @-webkit-keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<span class="home icon">Home</span>
+<span class="search icon">Search</span>
+<span class="user icon">User</span>
+<span class="mail icon">Mail</span>
+<span class="chat icon">Chat</span>
+</body>
+</html>

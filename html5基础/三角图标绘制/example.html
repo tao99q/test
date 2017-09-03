@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 50px;
+            background: #d4676a;
+            font-family: sans-serif;
+        }
+
+        article {
+            position: relative;
+            padding: 20px 40px;
+            width: 400px;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 5px 7px 1px rgba(0, 0, 0, .1);
+
+        }
+
+        article::after {
+            content: "";
+            position: absolute;
+            /*bottom: -40px;*/
+            right: 30px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent transparent #fff;
+        }
+        article::before{
+            content: "";
+            position: absolute;
+            /*bottom: -40px;*/
+            right: 25px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent transparent #d4676a;
+        }
+
+        article h1 {
+            color: #d4676a;
+        }
+
+        article p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<article>
+    <h1>Lorem</h1>
+    <p>With no change in the rule, the more you grow the more envious you become, the other courtiers like Rama Raja
+        Bhushana were against the growth of Ramalinga’s association with the King Rayalu. Whenever there is a
+        possibility,
+        those courtiers, and Rama Raja Bhushana had been working out for damaging Ramalinga’s image and sling mud on him
+        before the King. </p>
+</article>
+</body>
+</html>

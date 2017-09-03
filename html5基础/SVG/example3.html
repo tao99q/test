@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin: 50px;
+        }
+        #sec{
+            background: url("bg.jpg");
+            width: 200px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #sec svg{
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+        }
+        #sec-description{
+            position: absolute;
+            color: #fff;
+            box-sizing: border-box;
+            padding: 0 30px;
+            z-index: 20;
+        }
+        h1{
+            font-size: 48px;
+        }
+        p{
+            font-size: 14px;
+        }
+        #polygon{
+            fill:#34495e;
+            stroke-width: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="sec">
+    <div id="sec-description">
+        <h1>Zerg</h1>
+        <p>Led by the cunning Queen of ... on the galaxy.</p>
+    </div>
+    <svg width="200px" height="500px">
+        <polygon fill="white" stroke="blue" id="polygon" points="0,0,200,0,200,350,0,250">
+            <animate attributeName="points" dur="500ms" to="0,0,200,0,200,250,0,250" begin="polygon.mouseover" fill="freeze" >
+
+            </animate>
+        </polygon>
+    </svg>
+</div>
+</body>
+</html>

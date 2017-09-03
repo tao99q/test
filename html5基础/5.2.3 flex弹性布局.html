@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f3f2ef;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .comic {
+            flex: 1 1 auto;
+            padding: 30px 0;
+            text-align: center;
+            background: #e5e8e1;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.2) inset;
+        }
+
+        .comic:nth-child(even) {
+            margin-left: 0;
+        }
+
+        .comic img {
+            width: 60%;
+        }
+
+        .comic h1 {
+            color: #666666;
+            font-weight: normal;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+<div class="comic">
+    <img src="./img/fate.png" alt="">
+    <h1>Fate</h1>
+</div>
+<div class="comic">
+    <img src="./img/hulk.png" alt="">
+    <h1>Hulk</h1>
+</div>
+<div class="comic">
+    <img src="./img/superman.png" alt="">
+    <h1>Superman</h1>
+</div>
+<div class="comic">
+    <img src="./img/captain.png" alt="">
+    <h1>Captain</h1>
+</div>
+<div class="comic">
+    <img src="./img/wonder.png" alt="">
+    <h1>Wonder</h1>
+</div>
+<div class="comic">
+    <img src="./img/ironman.png" alt="">
+    <h1>Ironman</h1>
+</div>
+</body>
+</html>

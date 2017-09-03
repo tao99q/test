@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="800" height="500"></canvas>
+</body>
+<script>
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+  let img = new Image();
+  img.src = 'bg.jpg';
+  img.onload = function () {
+    ctx.drawImage(img, 0, 0, 800, 500);
+    img = ctx.getImageData(0, 0, 800, 500);
+    const picLength = 800 * 500;
+    for (let i = 0; i < picLength * 4; i += 4) {
+      let myRed = img.data[i];
+      let myGreen = img.data[i + 1];
+      let myBlue = img.data[i + 2];
+      let myAlpha = img.data[i + 3];
+      let myGray = parseInt((myRed + myGreen + myBlue) / 3);
+      img.data[i+3] = 200;
+
+
+    }
+    ctx.putImageData(img, 0, 0);
+  };
+
+
+</script>
+</html>
