@@ -1,23 +1,44 @@
 import React, {Component} from 'react';
-import wrapWithLoadData from './wrapWithLoadData';
 import PropTypes from 'prop-types';
 
 class CommentInput extends Component {
   static propTypes = {
-    username: PropTypes.string
+    username: PropTypes.string,
+    onSubmit: PropTypes.func,
+    onUsernameInputBlur: PropTypes.func
+  };
+  static defaultProps = {
+    username: ''
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      username: props.data || '',
+      username: props.username,
       content: ''
     }
   }
 
-
   componentDidMount() {
     this.textarea.focus();
+  }
+
+  handleUsernameBlur(e) {
+    if (this.props.onUsernameInputBlur) {
+      this.props.onUsernameInputBlur(e.target.value);
+    }
+  }
+
+  handleUsernameChange(e) {
+    this.setState({
+      username: e.target.value
+    });
+  }
+
+  handleContentChange(e) {
+    this.setState({
+      content: e.target.value
+    });
   }
 
   handleSubmit() {
@@ -34,21 +55,6 @@ class CommentInput extends Component {
     });
   }
 
-  handleUsernameChange(e) {
-    this.setState({
-      username: e.target.value
-    });
-  }
-
-  handleContentChange(e) {
-    this.setState({
-      content: e.target.value
-    });
-  }
-
-  handleUsernameBlur(e) {
-    this.props.saveData(e.target.value);
-  }
   render() {
     return (
         <div className='comment-input'>
@@ -77,6 +83,3 @@ class CommentInput extends Component {
     )
   }
 }
-
-CommentInput = wrapWithLoadData(CommentInput, 'username');
-export default CommentInput;

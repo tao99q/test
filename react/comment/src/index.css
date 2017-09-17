@@ -21,21 +21,25 @@ body {
     padding: 20px;
     margin-bottom: 10px;
 }
+
 .comment-field {
     margin-bottom: 15px;
     display: flex;
 }
+
 .comment-field .comment-field-name {
     display: flex;
     flex-basis: 100px;
     font-size: 14px;
 }
+
 .comment-field .comment-field-input {
     display: flex;
     flex: 1;
 }
+
 .comment-field-input input,
-.comment-field-input textarea{
+.comment-field-input textarea {
     border: 1px solid #e6e6e6;
     border-radius: 3px;
     padding: 5px;
@@ -44,14 +48,17 @@ body {
     resize: none;
     flex: 1;
 }
+
 .comment-field-input textarea {
     height: 100px;
 }
-.comment-field-button{
+
+.comment-field-button {
     display: flex;
     justify-content: flex-end;
 }
-.comment-field-button button{
+
+.comment-field-button button {
     background-color: #00a3cf;
     color: #fff;
     padding: 5px 10px;
@@ -61,17 +68,21 @@ body {
     width: 80px;
     outline: none;
 }
-.comment-field-button button:hover{
+
+.comment-field-button button:hover {
     background-color: #0087b2;
 }
+
 /* 评论列表样式 */
 .comment-list {
     background: #fff;
     border: 1px solid #fbfbfb;
     padding: 20px;
 }
+
 /* 评论组件样式 */
 .comment {
+    position: relative;
     display: flex;
     border-bottom: 1px solid #f1f1f1;
     margin-bottom: 10px;
@@ -91,4 +102,32 @@ body {
 .comment p {
     margin: 0;
     /*text-indent: 2em;*/
+}
+
+.comment .comment-createTime {
+    position: absolute;
+    padding-right: 5px;
+    bottom: 0;
+    right: 0;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.comment:hover .comment-delete {
+    color: #00a3cf;
+}
+
+.comment .comment-delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: transparent;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.comment code {
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    padding: 0 2px;
 }
