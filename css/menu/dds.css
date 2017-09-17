@@ -1,0 +1,32 @@
+.ddsmootmenu {
+    margin: 0 auto;
+    font: 12px '微软雅黑';
+    width: 730px;
+}
+
+.ddsmootmenu ul {
+    padding: 0;
+    margin: 0;
+    float: left;
+    background-color: #ff0066;
+    list-style: none;
+    z-index: 100;
+}
+.ddsmootmenu ul li{
+    position: relative;
+    display: block;
+    float: left;
+    width: 81px;
+    line-height: 31px;
+    text-align: center;
+}
+html .ddsmootmenu ul li{
+    position: relative;
+    float: left;
+    width: 81px;
+    line-height: 31px;
+    text-align: center;
+}
+.ddsmootmenu ul li a{
+
+}
