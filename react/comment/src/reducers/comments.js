@@ -6,10 +6,12 @@ export default function (state, action) {
   }
   switch (action.type) {
     case actionTypes.INIT_COMMENTS:
-      return {comments: action.comments};
+      return {
+        comments: action.comments
+      };
     case actionTypes.ADD_COMMENT:
       return {
-        comments: [...state.comments, acton.comment]
+        comments: [...state.comments, action.comment]
       };
     case actionTypes.DELETE_COMMENT:
       return {

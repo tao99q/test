@@ -18,13 +18,12 @@ class CommentList extends Component {
   }
 
   render() {
-    const comments = this.props.comments;
     return (
         <div className='comment-list'>
-          {comments.map((comment, index) => <Comment key={index}
-                                                     comment={comment}
-                                                     index={index}
-                                                     onDeleteComment={this.handleDeleteComment.bind(this)}/>)}
+          {this.props.comments.map((comment, i) => <Comment key={i}
+                                                            comment={comment}
+                                                            index={i}
+                                                            onDeleteComment={this.handleDeleteComment.bind(this)}/>)}
         </div>
     )
   }

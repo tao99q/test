@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-class CommentInput extends Component {
+export default class CommentInput extends Component {
   static propTypes = {
     username: PropTypes.string,
     onSubmit: PropTypes.func,
-    onUsernameInputBlur: PropTypes.func
+    onUserNameInputBlur: PropTypes.func
   };
   static defaultProps = {
     username: ''
@@ -24,8 +24,8 @@ class CommentInput extends Component {
   }
 
   handleUsernameBlur(e) {
-    if (this.props.onUsernameInputBlur) {
-      this.props.onUsernameInputBlur(e.target.value);
+    if (this.props.onUserNameInputBlur) {
+      this.props.onUserNameInputBlur(e.target.value);
     }
   }
 
@@ -82,4 +82,4 @@ class CommentInput extends Component {
         </div>
     )
   }
-}
+};

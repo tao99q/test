@@ -2,12 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import CommentList from '../components/CommentList';
-import * as actionTypes from '../actionTypes';
 import {deleteComment, initComments} from "../actions/index";
 
 class CommentListContainer extends Component {
   static propTypes = {
-    commnets: PropTypes.array,
+    comments: PropTypes.array,
     initComments: PropTypes.func,
     onDeleteComment: PropTypes.func
   };
@@ -44,7 +43,7 @@ class CommentListContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    commnets: state.comments
+    comments: state.comments
   };
 };
 const mapDispatchToProps = (dispatch) => {
