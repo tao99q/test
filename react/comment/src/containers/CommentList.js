@@ -43,7 +43,7 @@ class CommentListContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    comments: state.comments
+    comments: state.comments || []
   };
 };
 const mapDispatchToProps = (dispatch) => {

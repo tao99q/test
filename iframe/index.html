@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul class="list-side">
+    　　
+    <li><a target="a.html">top</a></li>
+    　　
+    <li><a target="b.html">news</a></li>
+    　　
+    <li><a target="c.html">product</a></li>
+    　　
+    <li><a href="http://ucmic.blogspot.com/" target="_self">contact</a></li>
+</ul>
+<div id="iframe">
+    　　<!--jquery 插入html 位址-->
+</div>
+
+</body>
+<script src="jquery-3.2.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $.get("a.html", function (data) { //初始將a.html include div#iframe
+            $("#iframe").html(data);
+        });
+        $('.list-side li').click(function () {
+            // 找出 li 中的超链接 href(#id)
+            var $this = $(this),
+                _clickTab = $this.find('a').attr('target'); // 找到链接a中的targer的值
+            $.get(_clickTab, function (data) {
+                $("#iframe").html(data);
+            });
+        });
+    });
+</script>
+</html>

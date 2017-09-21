@@ -60,7 +60,6 @@ class Comment extends Component {
           <p dangerouslySetInnerHTML={{
             __html: this._getProcessedContent(content)
           }}/>
-
           <span className="comment-createTime">
             {this.state.timeString}
           </span>

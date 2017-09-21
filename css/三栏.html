@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 960px;
+            margin: 0 auto;
+            border: 1px solid;
+        }
+
+        header {
+            background: #f00;
+        }
+
+        nav {
+            width: 150px;
+            float: left;
+            background: #dcd9c0;
+        }
+
+        nav li {
+            list-style-type: none;
+        }
+
+        article {
+            width: 600px;
+            float: left;
+            background: #ffed53;
+        }
+
+        section {
+            box-sizing: border-box;
+        }
+
+        aside {
+            width: 210px;
+            float: left;
+            background: #3f7ccf;
+        }
+        nav .inner {padding:10px;}
+        article .inner {padding:10px 20px;}
+        aside .inner {padding:10px;}
+
+        footer {
+            clear: both;
+            color: #ffffff;
+            background: #000;
+            text-align:center
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        <h3>布局中有了三个浮动栏</h3>
+    </header>
+    <nav>
+        <div class="inner">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+    </nav>
+    <article>
+        <div class="inner">
+            如图 5-1 所示，通过给整个外包装设定宽度值，并将其水平外边距设定为 auto ，这
+            个单栏布局在页面上居中了。随着向里添加内容，这一栏的高度会相应增加。外包
+            装中的 article 元素本质上就是一个没有宽度的块级盒子（关于“没有宽度的盒子”，
+            请参见 3.2 节），它水平扩展填满了外包装。下面，我们再向外包装里添加一个导航
+            元素，让它作为第二栏
+        </div>
+    </article>
+    <aside>
+        <div class="inner">
+            如图 5-3 所示，通过把三个浮动容器的总宽度设定为恰好等于外包装的宽度（150 +
+            600 + 210 = 960），就有了三栏布局的框架。就用这种办法，我可以
+        </div>
+    </aside>
+    <footer>
+        wwww
+    </footer>
+</div>
+</body>
+</html>
