@@ -34,8 +34,8 @@ class CommentInputContainer extends Component {
     if (!comment) return;
     if (!comment.username) return alert('输入用户名');
     if (!comment.content) return alert('输入评论内容');
-    const { comments } = this.props
-    const newComments = [...comments, comment]
+    const {comments} = this.props;
+    const newComments = [...comments, comment];
     localStorage.setItem('comments', JSON.stringify(newComments))
     if (this.props.onSubmit) {
       this.props.onSubmit(comment)
@@ -55,7 +55,7 @@ const mapStateToProps = (state) => {
   return {
     comments: state.comments
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(addComment(comment))
     }
   }
-}
+};
 
 export default connect(
     mapStateToProps,

@@ -17,7 +17,7 @@ class CommentListContainer extends Component {
 
   _loadComments() {
     let comments = localStorage.getItem('comments');
-    comments = comments ? JSON.parse(comments) : [];
+    comments = JSON.parse(comments) || [];
     this.props.initComments(comments);
   }
 
