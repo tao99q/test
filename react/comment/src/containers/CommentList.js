@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import CommentList from '../components/CommentList';
-import {deleteComment, initComments} from "../actions/index";
+import {deleteComment, initComments} from "../actions";
 
 class CommentListContainer extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ class CommentListContainer extends Component {
 
   _loadComments() {
     let comments = localStorage.getItem('comments');
-    comments = JSON.parse(comments);
+    comments = comments ? JSON.parse(comments) : [];
     this.props.initComments(comments);
   }
 
@@ -43,7 +43,7 @@ class CommentListContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    comments: state.comments || []
+    comments: state.comments
   };
 };
 const mapDispatchToProps = (dispatch) => {

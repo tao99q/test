@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import CommentInput from '../components/CommentInput';
-import {addComment} from "../actions/index";
+import {addComment} from "../actions";
 
 class CommentInputContainer extends Component {
   static propTypes = {
@@ -34,11 +34,11 @@ class CommentInputContainer extends Component {
     if (!comment) return;
     if (!comment.username) return alert('输入用户名');
     if (!comment.content) return alert('输入评论内容');
-    const {comments} = this.props;
-    const newComments = [...comments, comment];
-    localStorage.setItem('comments', JSON.stringify(newComments));
+    const { comments } = this.props
+    const newComments = [...comments, comment]
+    localStorage.setItem('comments', JSON.stringify(newComments))
     if (this.props.onSubmit) {
-      this.props.onSubmit(comment);
+      this.props.onSubmit(comment)
     }
   }
 
@@ -53,15 +53,19 @@ class CommentInputContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    comments: state.comments || []
+    comments: state.comments
   }
-};
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onSubmit: (comment) => {
-      dispatch(addComment(comment));
+      dispatch(addComment(comment))
     }
   }
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentInputContainer);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CommentInputContainer)
